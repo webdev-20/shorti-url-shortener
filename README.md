@@ -24,3 +24,28 @@ URL shortener (to be confirmed)
 
 ## Design
 Figma link: 
+
+
+# Contributors
+
+Thanks for participating in The Lassie Lounge Hacktoberfest 2022 project
+
+<table>
+  <tr>
+    <td>
+      <img src="https://img.icons8.com/color/344/circled-user-female-skin-type-4--v1.png" width="50"/>
+      <br/>
+        <a href="#">Person 1</a>
+     </td>
+     <td>
+      <img src="https://img.icons8.com/color/344/circled-user-female-skin-type-4--v1.png" width="50"/>
+      <br/>
+        <a href="#">Person 2</a>
+     </td>
+     <td>
+      <img src="https://img.icons8.com/color/344/circled-user-female-skin-type-4--v1.png" width="50"/>
+      <br/>
+        <a href="#">Person 3</a>
+     </td>
+  </tr>
+</table>
