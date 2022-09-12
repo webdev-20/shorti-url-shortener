@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "the-lassie-lounge-hacktoberfest-2022-project",
+  "dependencies": {
+    "concurrently": "^7.4.0"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "client": "yarn workspace client dev",
+    "server": "yarn workspace server nodemon index.js",
+    "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\""
+  }
+}
