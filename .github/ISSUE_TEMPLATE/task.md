@@ -1,6 +1,6 @@
 ---
 name:  Task
-about: 
+about: A task 
 title: ''
 labels: ''
 assignees: ''
