@@ -12,10 +12,16 @@ Before working on a new feature or fix, please let everyone know so we don't wor
 
 # Fetch new changes from upstream
 
+### From terminal
+
 1. `git fetch upstream`
 2. `git checkout main` if not already on main branch
    `git merge upstream/main`
 3. `git push origin main` to update the forked repo
+
+### From github website
+
+[![](https://i.imgur.com/7eLUTJQm.jpg)](https://i.imgur.com/7eLUTJQ.png)
 
 # Creating a Pull Request
 
@@ -30,8 +36,8 @@ Before working on a new feature or fix, please let everyone know so we don't wor
    `git add .` <br/>
    `git commit -m "commit message"` <br/>
    `git push origin feature/nav`
-6. Go to your forked repo and click on "Pull Request" on the top banner where it says "The branch is x commits ahead of ..."
-   ![](https://assets.digitalocean.com/articles/hfestfirstpr-pr.gif)
+6. Go to your forked repo and click on "Open Pull Request" on the top banner where it says "The branch is x commits ahead of ..."
+   [![](https://i.imgur.com/luSAAVKm.jpg)](https://i.imgur.com/luSAAVK.png)
 
 Read more: <br/>
 https://docs.github.com/en/get-started/quickstart/contributing-to-projects
