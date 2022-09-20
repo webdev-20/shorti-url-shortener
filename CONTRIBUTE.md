@@ -10,6 +10,15 @@ Before working on a new feature or fix, please let everyone know so we don't wor
    `yarn client` to start client only
    `yarn server` to start server only
 
+The frontend is run on port 5173 and backend is run on port 4002.
+
+# Installing packages
+in the root folder, 
+frontend/client: `yarn workspace client add <package>`
+backend/server: `yarn workspace server add <package>`
+
+or navigate to the respective folder and `yarn add <package>`
+
 # Fetch new changes from upstream
 
 ### From terminal
