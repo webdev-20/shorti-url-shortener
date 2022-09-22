@@ -1,11 +1,28 @@
 const express = require('express');
+const mongoose = require('mongoose')
+require('dotenv').config()
+
+const port = process.env.PORT || 4002
+const linksRouter = require('./src/routes/links.route');
+
+// setup express app
 const app = express();
-const port = 4002;
+app.use(express.json());
+
+// middlewares
+
+// routes
+app.use('/api/links', linksRouter);
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+    res.send(`Welcome to &lt;LinkShortener&gt; API`);
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+// mongodb and express server connection
+mongoose.connect(process.env.MONGO_URI).then(()=>{
+    console.log('MongoDB is connected')
+    app.listen(port, () => {
+        console.log(`listening on port ${port}`);
+    });
+})
+
