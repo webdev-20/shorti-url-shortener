@@ -42,3 +42,30 @@ Before working on a new feature or fix, please let everyone know so we don't wor
 Read more: <br/>
 https://docs.github.com/en/get-started/quickstart/contributing-to-projects
 https://www.digitalocean.com/community/tutorials/hacktoberfest-how-to-submit-your-first-pull-request-on-github
+
+<br />
+
+# Reviewing a Pull Request
+
+Remember that the Pull Request will be created from a forked repo.
+
+Open up the `.git/config` file and add a new line under `[remote "origin"]`:
+
+```
+fetch = +refs/pull/*/head:refs/pull/origin/*
+```
+
+Now you can fetch and checkout any pull request to test them:
+
+```shell
+# Fetch all pull request branches
+git fetch origin
+
+# Checkout out a given pull request branch based on its number
+git checkout -b 999 pull/origin/999
+```
+
+These branches will be read-only and you won't be able to push any changes.
+
+Read more: <br />
+https://gist.github.com/Chaser324/ce0505fbed06b947d962
