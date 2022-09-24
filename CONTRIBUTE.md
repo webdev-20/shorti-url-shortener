@@ -40,7 +40,7 @@ Before working on a new feature or fix, please let everyone know so we don't wor
    [![](https://i.imgur.com/luSAAVKm.jpg)](https://i.imgur.com/luSAAVK.png)
 
 Read more: <br/>
-https://docs.github.com/en/get-started/quickstart/contributing-to-projects
+https://docs.github.com/en/get-started/quickstart/contributing-to-projects <br />
 https://www.digitalocean.com/community/tutorials/hacktoberfest-how-to-submit-your-first-pull-request-on-github
 
 <br />
