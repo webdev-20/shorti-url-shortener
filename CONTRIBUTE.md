@@ -49,5 +49,11 @@ or navigate to the respective folder and `yarn add <package>`
    [![](https://i.imgur.com/luSAAVKm.jpg)](https://i.imgur.com/luSAAVK.png)
 
 Read more: <br/>
-https://docs.github.com/en/get-started/quickstart/contributing-to-projects
+https://docs.github.com/en/get-started/quickstart/contributing-to-projects <br />
 https://www.digitalocean.com/community/tutorials/hacktoberfest-how-to-submit-your-first-pull-request-on-github
+
+<br />
+
+# Reviewing a Pull Request
+
+If reviewing (optional), [install GitHub CLI](https://cli.github.com/) and ask to be added to the Code Review team.
