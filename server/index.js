@@ -18,20 +18,34 @@ app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 // middlewares
 
 // routes
-app.use('/api/links', linksRouter);
+function setupRoutes() {
+    app.use('/api/links', linksRouter);
 
-app.get('/', (req,res) =>{
-    res.send('Express backend running')
-})
-app.get('/api', (req, res) => {
-    res.send({message: `Welcome to &lt;LinkShortener&gt; API`});
-});
+    app.get('/', (req, res) => {
+        res.send('Express backend running')
+    })
+    app.get('/api', (req, res) => {
+        res.send({ message: `Welcome to &lt;LinkShortener&gt; API` });
+    });
+}
+
+async function init() {
+    setupRoutes();
+    connectMongoDb();
+}
 
 // mongodb and express server connection
-mongoose.connect(process.env.MONGO_URI).then(()=>{
-    console.log('MongoDB is connected')
+function connectMongoDb() {
+    mongoose.connect(process.env.MONGO_URI).then(() => {
+        console.log('MongoDB is connected')
+        initAppServer();
+    })
+}
+
+function initAppServer() {
     app.listen(port, () => {
         console.log(`listening on port ${port}`);
     });
-})
+}
 
+init();
