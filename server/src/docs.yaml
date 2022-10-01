@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: The Lassie Lounge - URL Shortener API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4002
+tags:
+  - name: Auth
+    description: Authentication / Authorization
+  - name: Links
+    description: Add, edit, delete links
+
+
+
+
+paths:
+  /api/:
+    get:
+      description: API Root
+      responses:
+        200:
+          description: Welcome Message
+          content:
+            application/json:
+              schema:
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+
+  /api/links:
+    get:
+      tags:
+        - Links
+      description: Get all links in the database
+      responses:
+        200:
+          description: Successfully get all links
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - data
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        shortLink:
+                          type: string
+                          description: shortened code of the URL
+                        longLink:
+                          type: string
+                          description: original (long) link
