@@ -36,9 +36,9 @@ Thanks for participating in The Lassie Lounge Hacktoberfest 2022 project
 <table>
   <tr>
     <td>
-      <img src="https://img.icons8.com/color/344/circled-user-female-skin-type-4--v1.png" width="50"/>
+     <img src="https://github.com/klezi10.png" width="50"/>
       <br/>
-        <a href="#">Person 1</a>
+        <a href="https://github.com/klezi10">klezi10</a>
      </td>
      <td>
       <img src="https://img.icons8.com/color/344/circled-user-female-skin-type-4--v1.png" width="50"/>
