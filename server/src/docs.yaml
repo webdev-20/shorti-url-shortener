@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: The Lassie Lounge - URL Shortener API
+  title: The Lassie Lounge - Shorti API
   version: 1.0.0
 servers:
   - url: http://localhost:4002
@@ -51,9 +51,79 @@ paths:
                     items:
                       type: object
                       properties:
-                        shortLink:
-                          type: string
-                          description: shortened code of the URL
-                        longLink:
+                        url:
                           type: string
                           description: original (long) link
+                        short:
+                          type: string
+                          description: shortened code of the URL
+                        creationDate:
+                          type: string
+                          description: creation date
+                        expirationDate:
+                          type: string
+                          description: date when the link will be expired and be automatically deleted from the database
+                        id:
+                          type: string
+                          description: id of the link
+
+        500:
+          description: cannot get links (server errors)
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+
+    post:
+      tags:
+        - Links
+      description: Create a shortened link (code)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                url:
+                  type: string
+        required: true
+      responses:
+        201:
+          description: Successfully created a (short) code for the link
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - data
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        description: original (long) link
+                      short:
+                        type: string
+                        description: shortened code of the URL
+        500:
+          description: Link creation fail
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
