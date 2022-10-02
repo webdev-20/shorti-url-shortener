@@ -18,7 +18,7 @@ app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 // middlewares
 
 // routes
-function setupRoutes() {
+const setupRoutes = () => {
     app.use('/api/links', linksRouter);
 
     app.get('/', (req, res) => {
@@ -29,23 +29,23 @@ function setupRoutes() {
     });
 }
 
-async function init() {
-    setupRoutes();
-    connectMongoDb();
-}
-
 // mongodb and express server connection
-function connectMongoDb() {
+const connectMongoDb = () => {
     mongoose.connect(process.env.MONGO_URI).then(() => {
         console.log('MongoDB is connected')
         initAppServer();
     })
 }
 
-function initAppServer() {
+const initAppServer = () => {
     app.listen(port, () => {
         console.log(`listening on port ${port}`);
     });
+}
+
+const init = () => {
+    setupRoutes();
+    connectMongoDb();
 }
 
 init();
