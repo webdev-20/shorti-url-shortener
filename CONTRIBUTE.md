@@ -59,6 +59,6 @@ If reviewing (optional), [install GitHub CLI](https://cli.github.com/) and ask t
 
 # Low or No-Code Contributions
 
-If you are making a low or no-code contribution to this project that does NOT involve making a pull request, please log your activity in the [Activity Log](ACTIVITYLOG.md). 
+If you are making a low or no-code contribution to this project, please log your activity in the [Activity Log](ACTIVITYLOG.md) by making a pull request. 
 
 For more information on what qualifies as a low or no-code contribution, please review the [Hacktoberfest Guidelines](https://hacktoberfest.com/about/#low-or-non-code).
