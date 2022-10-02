@@ -8,6 +8,7 @@ function Navbar() {
       <nav className={classes.nav}>
         <ul>
           <li>
+            {/* temporary Logo placeholder */}
             <NavLink to="/" className={classes.logo}>
               Logo
             </NavLink>
