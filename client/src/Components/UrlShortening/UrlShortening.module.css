@@ -1,3 +1,29 @@
 .UrlShortening {
-    background-color: green;
+  background-color: green;
+}
+
+.urlInput {
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  border-radius: 2px;
+}
+
+.shortenBtn {
+  border-radius: 2px;
+  color: black;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: whitesmoke;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.shortenBtn:hover,
+.shortenBtn:focus {
+  background-color: black;
+  border-color: black;
+  color: whitesmoke;
 }

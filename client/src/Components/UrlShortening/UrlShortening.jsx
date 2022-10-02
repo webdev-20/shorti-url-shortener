@@ -1,18 +1,26 @@
 import classes from "./UrlShortening.module.css";
 
 function UrlShortening() {
+  function handleInput(event) {
+    console.log(event.target.value);
+  }
+
   return (
     <div className={classes.UrlShortening}>
       <form>
         <input
-        //   id="word-lookup"
-          // value='url here'
+          id="urlInput"
+          className={classes.urlInput}
+          // value=''
           placeholder="url here"
-          type="search"
+          // type="search"
           autoComplete="off"
-          // onChange={handleInput}
+          onChange={handleInput}
           autoFocus="on"
         ></input>
+        <button type="submit" className={classes.shortenBtn}>
+          Shorten It!
+        </button>
       </form>
     </div>
   );
