@@ -12,10 +12,10 @@ function Navbar() {
               Logo
             </NavLink>
           </li>
-          <li>
+          <li className={classes.featuresPricing}>
             <NavLink to="/">Features</NavLink>
           </li>
-          <li>
+          <li className={classes.featuresPricing}>
             <NavLink to="/">Pricing</NavLink>
           </li>
         </ul>
