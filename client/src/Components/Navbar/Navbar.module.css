@@ -1,0 +1,28 @@
+.header {
+  width: 100%;
+  height: 5rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  font-size: 1.25rem;
+}
+
+.nav a {
+    padding-left: 7px;
+}
+
+.nav .loginRegister a {
+    text-decoration: none;
+}
