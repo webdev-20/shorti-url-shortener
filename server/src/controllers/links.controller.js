@@ -24,6 +24,10 @@ createLink = async (req, res) => {
   if (!/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
     return res.status(500).json({ success: false, message: "invalid url" });
   }
+  if (await Link.findOne({ short: req.body.short }))
+    return res
+      .status(409)
+      .json({ success: false, message: "short URL already exists" });
   const randomString = req.body.short ?? (await getRandomString());
   try {
     const link = new Link({
