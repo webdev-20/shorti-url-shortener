@@ -52,8 +52,13 @@ Read more: <br/>
 https://docs.github.com/en/get-started/quickstart/contributing-to-projects <br />
 https://www.digitalocean.com/community/tutorials/hacktoberfest-how-to-submit-your-first-pull-request-on-github
 
-<br />
 
 # Reviewing a Pull Request
 
 If reviewing (optional), [install GitHub CLI](https://cli.github.com/) and ask to be added to the Code Review team.
+
+# Low or No-Code Contributions
+
+If you are making a low or no-code contribution to this project that does NOT involve making a pull request, please log your activity in the [Activity Log](ACTIVITYLOG.md). 
+
+For more information on what qualifies as a low or no-code contribution, please review the [Hacktoberfest Guidelines](https://hacktoberfest.com/about/#low-or-non-code).
