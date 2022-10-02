@@ -16,23 +16,29 @@ getAllLinks = async (req, res) => {
 };
 
 createLink = async (req, res) => {
+  const minLength = 1;
+  const maxLength = 6;
   if (!req.body.url) {
     return res
       .status(500)
       .json({ success: false, message: "URL is required." });
   }
   if (!/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
-    return res.status(500).json({ success: false, message: "invalid url" });
+    return res.status(500).json({ success: false, message: "invalid URL" });
   }
+  if(req.body.short.length < minLength || req.body.short.length > maxLength){ 
+    return res.status(413).json({ success: false, message: "short URL isn't the right length"})
+  }
+  if (!/(-)+[^[a-zA-Z]+$]/.test(req.body.short)) return res.status(400).json({ success: false, message: "short URL has invalid characters"})
   if (await Link.findOne({ short: req.body.short }))
     return res
       .status(409)
       .json({ success: false, message: "short URL already exists" });
-  const randomString = req.body.short ?? (await getRandomString());
+  const shortCode = req.body.short || (await getRandomString());
   try {
     const link = new Link({
       url: req.body.url,
-      short: randomString,
+      short: shortCode,
     });
     const savedLink = await link.save();
     return res.status(201).json({

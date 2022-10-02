@@ -92,7 +92,10 @@ paths:
               properties:
                 url:
                   type: string
-        required: true
+                  required: true
+                short:
+                  type: string
+                  required: false
       responses:
         201:
           description: Successfully created a (short) code for the link
@@ -114,6 +117,45 @@ paths:
                       short:
                         type: string
                         description: shortened code of the URL
+        400:
+          description: Incorrect syntax
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        409:
+          description: Duplicate
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        413:
+          description: Incorrect length
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
         500:
           description: Link creation fail
           content:
