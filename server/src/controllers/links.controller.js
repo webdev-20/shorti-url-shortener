@@ -1,5 +1,6 @@
 const {getRandomString} = require('../utils/getRandomString')
 const Link = require('../models/link')
+const {response} = require('express');
 
 getAllLinks = async (req, res) => {
     const allLinks = await Link.find({})
@@ -38,7 +39,21 @@ createLink = async (req, res) => {
     }
 }
 
+getLinkFromCode = async (req,res) => {
+    const short = req.params.short
+    try{
+        const foundLink = await Link.findOne({"short": short})
+        if(!foundLink){
+            return res.status(500).json({ success: false, error: "short link does not exist" })
+        }
+        res.redirect(foundLink.url)
+    }catch(error){
+        res.status(500).json({ success: false, error: "server error" })
+    }
+}
+
 module.exports = {
     getAllLinks,
-    createLink
+    createLink,
+    getLinkFromCode
 }
