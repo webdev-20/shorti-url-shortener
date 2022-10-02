@@ -1,11 +1,21 @@
 .UrlShortening {
   background-color: green;
+  max-width: 100%;
+  padding: 1.5em 2.3em;
+}
+
+.form {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .urlInput {
   padding: 0.6em 1.2em;
   font-size: 1em;
   border-radius: 2px;
+  width: 30rem;
+  max-width: 100%;
+  margin-right: 30px;
 }
 
 .shortenBtn {

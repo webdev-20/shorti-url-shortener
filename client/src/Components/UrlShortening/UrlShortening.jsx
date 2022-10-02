@@ -5,9 +5,14 @@ function UrlShortening() {
     console.log(event.target.value);
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log('submitted');
+  }
+
   return (
     <div className={classes.UrlShortening}>
-      <form>
+      <form className={classes.form} onSubmit={handleSubmit}>
         <input
           id="urlInput"
           className={classes.urlInput}
