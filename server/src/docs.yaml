@@ -117,19 +117,6 @@ paths:
                       short:
                         type: string
                         description: shortened code of the URL
-        400:
-          description: Incorrect syntax
-          content:
-            application/json:
-              schema:
-                required:
-                  - success
-                  - message
-                properties:
-                  success:
-                    type: boolean
-                  message:
-                    type: string
         409:
           description: Duplicate
           content:
@@ -143,7 +130,7 @@ paths:
                     type: boolean
                   message:
                     type: string
-        413:
+        422:
           description: Incorrect length
           content:
             application/json:
