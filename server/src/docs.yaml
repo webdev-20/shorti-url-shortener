@@ -127,3 +127,32 @@ paths:
                     type: boolean
                   message:
                     type: string
+
+  /api/links/{short}:
+    get:
+      tags:
+        - Links
+      description: Get original url from the short code
+      parameters:
+        - in: path
+          name: short
+          schema:
+            type: string
+          required: true
+          description: short code
+      responses:
+        302:
+          description: Successfully get the original URL and redirect the user
+        500:
+          description: cannot get link
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
