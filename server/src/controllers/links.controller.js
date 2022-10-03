@@ -1,6 +1,5 @@
 const {getRandomString} = require('../utils/getRandomString')
 const Link = require('../models/link')
-const {response} = require('express');
 
 getAllLinks = async (req, res) => {
     const allLinks = await Link.find({})
@@ -19,6 +18,8 @@ getAllLinks = async (req, res) => {
 createLink = async (req, res) => {
   const minLength = 1;
   const maxLength = 6;
+
+  //TODO: maybe put all the validations into it owns function, possbily in /utils
   if(!req.body.url){
     return res.status(500).json({
         "success": false,
@@ -31,22 +32,25 @@ createLink = async (req, res) => {
         "message": "invalid url"
     })
   }
-  if(req.body.short.length < minLength || req.body.short.length > maxLength){ 
-    return res.status(422).json({
-        success: false,
-        message: "short URL isn't the right length"})
+  if(req.body.short){
+      if(req.body.short.length < minLength || req.body.short.length > maxLength){
+          return res.status(422).json({
+              success: false,
+              message: "short URL isn't the right length"
+          })
+      }
+      // TODO: change getRandomString() to match the short code format (or change this)
+      // exact format and allowed characters to be decided
+      if (!/^[A-Za-z0-9_-]*$/.test(req.body.short))
+          return res.status(422).json({
+              success: false,
+              message: "short URL has invalid characters"
+          })
+      if (await Link.findOne({ short: req.body.short }))
+          return res
+              .status(409)
+              .json({ success: false, message: "short URL already exists" });
   }
-  if (!/(-)+[^[a-zA-Z]+$]/.test(req.body.short))
-      return res.status(422).json({
-          success: false,
-          message: "short URL has invalid characters"
-      })
-  if (await Link.findOne({ short: req.body.short }))
-    return res
-      .status(409).json({
-            success: false,
-            message: "short URL already exists"
-      });
   const shortCode = req.body.short || (await getRandomString());
   try{
     const link = new Link({
@@ -81,3 +85,4 @@ module.exports = {
     createLink,
     getLinkFromCode
 }
+
