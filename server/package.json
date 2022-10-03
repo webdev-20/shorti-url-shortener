@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "lint-staged": {
+    "*/.{js,jsx,ts,tsx}": [
+      "prettier --write"
+    ]
+   },
   "dependencies": {
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
@@ -10,5 +15,9 @@
     "nodemon": "^2.0.19",
     "swagger-ui-express": "^4.5.0",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
   }
 }
