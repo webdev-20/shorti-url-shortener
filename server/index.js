@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose')
+const cors = require('cors');
 require('dotenv').config()
 
 const port = process.env.PORT || 4002
@@ -16,6 +17,10 @@ const swaggerDocument = YAML.load('./src/docs.yaml')
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 // middlewares
+app.use(cors({
+    origin: 'http://127.0.0.1:5173',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }));
 
 // routes
 app.use('/api/links', linksRouter);

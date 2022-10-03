@@ -4,7 +4,7 @@ import classes from "./UrlShortening.module.css";
 function UrlShortening() {
   const urlInputRef = useRef();
 
-  function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
     const enteredUrl = urlInputRef.current.value;
     console.log(enteredUrl);

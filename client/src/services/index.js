@@ -1,15 +1,15 @@
-import { axios } from 'axios';
+import axios  from 'axios';
 
-const apiURL = 'http://localhost:4002'
+const apiURL = 'http://127.0.0.1:4002/api/links'
 
 export async function getAllLinks() {
-  await axios.get(apiURL);
+  return await axios.get(apiURL);
 }
 
-export async function createLink(url) {
-  await axios.post(apiURL, { url });
+export async function createLink(url, short = "") {
+  return await axios.post(apiURL, { url, short });
 }
 
 export async function getLinkFromCode(code) {
-  await axios.get(`${apiURL}/${code}`);
+  return await axios.get(`${apiURL}/${code}`);
 }
