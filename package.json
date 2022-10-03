@@ -13,7 +13,8 @@
     "server": "yarn workspace server nodemon index.js",
     "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
     "prepare": "husky install",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prettier-check": "prettier --check ."
   },
   "devDependencies": {
     "husky": "^8.0.0",

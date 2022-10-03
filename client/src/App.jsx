@@ -1,7 +1,7 @@
-import Navbar from './Components/Navbar/Navbar'
-import Footer from './Components/Footer/Footer'
-import UrlShortening from './Components/UrlShortening/UrlShortening'
-import './App.css'
+import Navbar from './Components/Navbar/Navbar';
+import Footer from './Components/Footer/Footer';
+import UrlShortening from './Components/UrlShortening/UrlShortening';
+import './App.css';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <UrlShortening />
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

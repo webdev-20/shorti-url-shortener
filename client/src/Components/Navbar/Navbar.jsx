@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
-import classes from "./Navbar.module.css";
+import classes from './Navbar.module.css';
 
 function Navbar() {
   return (

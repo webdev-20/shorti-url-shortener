@@ -1,0 +1,4 @@
+*.md
+*.yaml
+.prettierrc
+package.json
