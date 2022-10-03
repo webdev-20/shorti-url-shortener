@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { createLink } from "../../services";
 import classes from "./UrlShortening.module.css";
 
 function UrlShortening() {
@@ -7,7 +8,7 @@ function UrlShortening() {
   async function submitHandler(event) {
     event.preventDefault();
     const enteredUrl = urlInputRef.current.value;
-    console.log(enteredUrl);
+    createLink(enteredUrl)
   }
 
   return (

@@ -18,7 +18,7 @@ app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 // middlewares
 app.use(cors({
-    origin: 'http://127.0.0.1:5173',
+    origin: 'http://localhost:5173',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }));
 

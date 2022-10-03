@@ -1,15 +1,16 @@
+require('dotenv').config();
 import axios  from 'axios';
 
-const apiURL = 'http://127.0.0.1:4002/api/links'
+const linkApiURL = `${process.env.API_URL}/links`
 
 export async function getAllLinks() {
-  return await axios.get(apiURL);
+  return await axios.get(linkApiURL);
 }
 
 export async function createLink(url, short = "") {
-  return await axios.post(apiURL, { url, short });
+  return await axios.post(linkApiURL, { url, short });
 }
 
 export async function getLinkFromCode(code) {
-  return await axios.get(`${apiURL}/${code}`);
+  return await axios.get(`${linkApiURL}/${code}`);
 }
