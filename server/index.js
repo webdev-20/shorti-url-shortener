@@ -1,13 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
-require('dotenv').config();
+const passport = require('passport');
+require('dotenv').config({ path: './src/config/.env' });
 
 const port = process.env.PORT || 4002;
 const linksRouter = require('./src/routes/links.route');
+const userRouter = require('./src/routes/user.route');
+require('./src/config/passport');
 
 // setup express app
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // setup swagger
 const YAML = require('yamljs');
@@ -19,6 +23,7 @@ app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 // routes
 app.use('/api/links', linksRouter);
+app.use('/api/users', userRouter);
 
 app.get('/', (req, res) => {
   res.send('Express backend running');
