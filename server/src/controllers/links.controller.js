@@ -15,9 +15,8 @@ getAllLinks = async (req, res) => {
   });
 };
 
-
 createLink = async (req, res) => {
-
+  // TODO: probably move these into config
   const minLength = 1;
   const maxLength = 6;
 
@@ -68,40 +67,35 @@ createLink = async (req, res) => {
 };
 
 editLink = async (req, res) => {
-    try {
-        if(!req.body.url){
-            return res.status(500).json({ "success": false, "message": "URL is required." })
-        }
+  try {
+    if (!req.body.url) {
+      return res.status(500).json({ success: false, message: 'URL is required.' });
+    }
 
-        const link = await Link.findOne({ short: req.params.short })
-        if(!link){
-            return res.status(500).json({ "success": false, "message": "URL not found." })
-        }
-        
-        if (!/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
-            return res.status(500).json({ "success": false, "message": "invalid url" })
-        }
+    const link = await Link.findOne({ short: req.params.short });
+    if (!link) {
+      return res.status(500).json({ success: false, message: 'URL not found.' });
+    }
 
-        link.url = req.body.url
-        await link.save();
+    if (!/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
+      return res.status(500).json({ success: false, message: 'invalid url' });
+    }
 
-        res.status(200).json({"success": true, "message": "URL updated successfully."});
-    } 
-    catch (error) {
-        res.status(500).json({ "success": false, "message": error.message })
- }
-}
+    link.url = req.body.url;
+    await link.save();
 
-getLinkFromCode = async (req,res) => {
-    const short = req.params.short
-    try{
-        const foundLink = await Link.findOne({"short": short})
-        if(!foundLink){
-            return res.status(500).json({ success: false, error: "short link does not exist" })
-        }
-        res.redirect(foundLink.url)
-    }catch(error){
-        res.status(500).json({ success: false, error: "server error" })
+    res.status(200).json({ success: true, message: 'URL updated successfully.' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+getLinkFromCode = async (req, res) => {
+  const short = req.params.short;
+  try {
+    const foundLink = await Link.findOne({ short: short });
+    if (!foundLink) {
+      return res.status(500).json({ success: false, error: 'short link does not exist' });
     }
     res.redirect(foundLink.url);
   } catch (error) {
@@ -110,9 +104,8 @@ getLinkFromCode = async (req,res) => {
 };
 
 module.exports = {
-    getAllLinks,
-    createLink,
-    editLink,
-    getLinkFromCode
-}
-
+  getAllLinks,
+  createLink,
+  editLink,
+  getLinkFromCode,
+};
