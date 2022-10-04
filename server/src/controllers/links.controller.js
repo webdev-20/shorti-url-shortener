@@ -16,6 +16,7 @@ getAllLinks = async (req, res) => {
 };
 
 createLink = async (req, res) => {
+  // TODO: probably move these into config
   const minLength = 1;
   const maxLength = 6;
 
