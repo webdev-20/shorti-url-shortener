@@ -157,6 +157,54 @@ paths:
                   message:
                     type: string
 
+    put:
+      tags:
+        - Links
+      description: Edit a link (code)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                url:
+                  type: string
+        required: true
+      responses:
+        200:
+          description: URL updated successfully.
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - data
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        description: original (long) link
+                      short:
+                        type: string
+                        description: shortened code of the URL
+        404:
+          description: Url Not Found (If short is not matching)
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        500:
+          description: Url is required in body
   /api/links/{short}:
     get:
       tags:

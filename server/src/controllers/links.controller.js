@@ -70,6 +70,34 @@ createLink = async (req, res) => {
   }
 }
 
+editLink = async (req, res) => {
+  try {
+    if (!req.body.url) {
+      return res
+        .status(500)
+        .json({ success: false, message: 'URL is required.' })
+    }
+
+    const link = await Link.findOne({ short: req.params.short })
+    if (!link) {
+      return res.status(500).json({ success: false, message: 'URL not found.' })
+    }
+
+    if (!/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
+      return res.status(500).json({ success: false, message: 'invalid url' })
+    }
+
+    link.url = req.body.url
+    await link.save()
+
+    res
+      .status(200)
+      .json({ success: true, message: 'URL updated successfully.' })
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message })
+  }
+}
+
 getLinkFromCode = async (req, res) => {
   const short = req.params.short
   try {
@@ -104,6 +132,7 @@ deleteLink = async (req, res) => {
 module.exports = {
   getAllLinks,
   createLink,
+  editLink,
   getLinkFromCode,
   deleteLink,
 }
