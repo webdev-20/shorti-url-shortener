@@ -28,6 +28,7 @@ URL shortener (to be confirmed)
 ## Design
 
 Figma link:
+API Docs: http://localhost:4002/api/docs/
 
 # Contributors
 
