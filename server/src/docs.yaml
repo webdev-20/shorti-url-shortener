@@ -92,7 +92,10 @@ paths:
               properties:
                 url:
                   type: string
-        required: true
+                  required: true
+                short:
+                  type: string
+                  required: false
       responses:
         201:
           description: Successfully created a (short) code for the link
@@ -114,6 +117,32 @@ paths:
                       short:
                         type: string
                         description: shortened code of the URL
+        409:
+          description: Duplicate
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        422:
+          description: Incorrect length
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
         500:
           description: Link creation fail
           content:
@@ -176,6 +205,23 @@ paths:
                     type: string
         500:
           description: Url is required in body
+  /api/links/{short}:
+    get:
+      tags:
+        - Links
+      description: Get original url from the short code
+      parameters:
+        - in: path
+          name: short
+          schema:
+            type: string
+          required: true
+          description: short code
+      responses:
+        302:
+          description: Successfully get the original URL and redirect the user
+        500:
+          description: cannot get link
           content:
             application/json:
               schema:
