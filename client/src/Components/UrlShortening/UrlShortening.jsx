@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import classes from "./UrlShortening.module.css";
+import { useRef } from 'react';
+import classes from './UrlShortening.module.css';
 
 function UrlShortening() {
   const urlInputRef = useRef();
