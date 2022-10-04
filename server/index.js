@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser');
 require('dotenv').config()
 
 const port = process.env.PORT || 4002
 const linksRouter = require('./src/routes/links.route');
+const userRouter = require('./src/routes/user.route');
 
 // setup express app
 const app = express();
@@ -16,9 +18,11 @@ const swaggerDocument = YAML.load('./src/docs.yaml')
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 // middlewares
+app.use(cookieParser());
 
 // routes
 app.use('/api/links', linksRouter);
+app.use('/api/user', userRouter);
 
 app.get('/', (req,res) =>{
     res.send('Express backend running')
