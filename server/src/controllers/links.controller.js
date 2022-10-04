@@ -44,7 +44,7 @@ editLink = async (req, res) => {
             return res.status(500).json({ "success": false, "message": "URL is required." })
         }
 
-        const link = await Link.findById(req.params.urlID)
+        const link = await Link.findOne({ short: req.params.short })
         if(!link){
             return res.status(500).json({ "success": false, "message": "URL not found." })
         }

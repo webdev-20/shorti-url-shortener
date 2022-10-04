@@ -3,7 +3,7 @@ const linksController = require('../controllers/links.controller')
 
 router.get('/', linksController.getAllLinks)
 router.post('/', linksController.createLink)
-router.put('/:urlID', linksController.editLink)
+router.put('/:short', linksController.editLink)
 
 
 module.exports = router
