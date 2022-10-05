@@ -1,14 +1,49 @@
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const validator = require('validator');
 const User = require('../models/User');
 
 // @desc    Register new user
 // @route   POST /api/users/signup
 // @access  Public
-const postSignup = async (req, res, next) => {
-  res.json({
-    message: 'Signup successful',
-    user: req.user,
+const postSignup = (req, res, next) => {
+  const validationErrors = [];
+  if (!validator.isEmail(req.body.email))
+    validationErrors.push('Please enter a valid email address.');
+  if (!validator.isLength(req.body.password, { min: 8 }))
+    validationErrors.push('Password must be at least 8 characters long');
+  if (req.body.password !== req.body.confirmPassword)
+    validationErrors.push('Passwords do not match');
+
+  if (validationErrors.length) {
+    return res.status(400).json({ success: false, message: validationErrors });
+  }
+
+  req.body.email = validator.normalizeEmail(req.body.email, {
+    gmail_remove_dots: false,
+  });
+
+  const user = new User({
+    email: req.body.email,
+    password: req.body.password,
+  });
+
+  User.findOne({ email: req.body.email }, (err, existingUser) => {
+    if (err) {
+      return next(err);
+    }
+    if (existingUser) {
+      res.status(409).json({
+        success: false,
+        message: 'Account with that email address already exists.',
+      });
+    }
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.status(200).json({ success: true, message: 'Sign up successful.' });
+    });
   });
 };
 
@@ -18,10 +53,11 @@ const postSignup = async (req, res, next) => {
 const postLogin = async (req, res, next) => {
   passport.authenticate('login', async (err, user, info) => {
     try {
-      if (err || !user) {
-        const error = new Error('An error occurred.');
-
-        return next(error);
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return res.status(500).json({ success: false, message: info.message });
       }
 
       req.login(user, { session: false }, async (error) => {
@@ -29,11 +65,10 @@ const postLogin = async (req, res, next) => {
 
         const body = { _id: user._id, email: user.email };
         const token = jwt.sign({ user: body }, 'TOP_SECRET');
-
-        return res.json({ token });
+        return res.status(200).json({ success: true, message: 'Log in successful.', token });
       });
     } catch (error) {
-      return next(error);
+      res.status(500).json({ success: false, message: error.message });
     }
   })(req, res, next);
 };
