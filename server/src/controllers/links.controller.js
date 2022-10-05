@@ -114,18 +114,23 @@ getLinkFromCode = async (req, res) => {
 }
 
 deleteLink = async (req, res) => {
-  const linkId = req.params.id
+  const short = req.params.short
   try {
-    const foundLink = await Link.findById(linkId)
+    const foundLink = await Link.findOne({ short: short })
     if (!foundLink) {
       return res
-        .status(500)
-        .json({ success: false, error: 'short link does not exist' })
+        .status(200)
+        .json({ success: false, message: 'short link does not exist' })
     }
     await foundLink.remove({})
-    res.redirect('/')
+    res
+      .status(500)
+      .json({
+        success: true,
+        message: 'short link has been successfully deleted',
+      })
   } catch (error) {
-    res.status(500).json({ success: false, error: 'server error' })
+    res.status(500).json({ success: false, message: 'server error' })
   }
 }
 
