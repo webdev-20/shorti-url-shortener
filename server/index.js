@@ -1,8 +1,9 @@
 const express = require('express');
+const http = require('http')
 const mongoose = require('mongoose');
 require('dotenv').config();
+const {PORT} = require('./src/config');
 
-const port = process.env.PORT || 4002;
 const linksRouter = require('./src/routes/links.route');
 
 // setup express app
@@ -28,9 +29,22 @@ app.get('/api', (req, res) => {
 });
 
 // mongodb and express server connection
-mongoose.connect(process.env.MONGO_URI).then(() => {
-  console.log('MongoDB is connected');
-  app.listen(port, () => {
-    console.log(`listening on port ${port}`);
-  });
+const server = http.createServer(app);
+
+(async ()=>{
+  try{
+    await mongoose.connect(process.env.MONGO_URI)
+    console.log('Connected to MongoDB.')
+  }catch (err){
+    console.log('Failed to connect to MongoDB. ', err)
+  }
+})()
+
+server.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
 });
+
+
+
+
+module.exports = server
