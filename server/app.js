@@ -1,9 +1,5 @@
 const express = require('express');
-const http = require('http')
-const mongoose = require('mongoose');
-const passport = require('passport');
 require('dotenv').config();
-const {PORT} = require('./src/config');
 
 const linksRouter = require('./src/routes/links.route');
 const userRouter = require('./src/routes/user.route');
@@ -33,23 +29,4 @@ app.get('/api', (req, res) => {
   res.send({ message: `Welcome to &lt;LinkShortener&gt; API` });
 });
 
-// mongodb and express server connection
-const server = http.createServer(app);
-
-(async ()=>{
-  try{
-    await mongoose.connect(process.env.MONGO_URI)
-    console.log('Connected to MongoDB.')
-  }catch (err){
-    console.log('Failed to connect to MongoDB. ', err)
-  }
-})()
-
-server.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
-});
-
-
-
-
-module.exports = server
+module.exports = app;
