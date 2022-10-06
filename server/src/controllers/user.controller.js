@@ -7,45 +7,49 @@ const User = require('../models/User');
 // @route   POST /api/users/signup
 // @access  Public
 const postSignup = (req, res, next) => {
-  const validationErrors = [];
-  if (!validator.isEmail(req.body.email))
-    validationErrors.push('Please enter a valid email address.');
-  if (!validator.isLength(req.body.password, { min: 8 }))
-    validationErrors.push('Password must be at least 8 characters long');
-  if (req.body.password !== req.body.confirmPassword)
-    validationErrors.push('Passwords do not match');
+  try {
+    const validationErrors = [];
+    if (!validator.isEmail(req.body.email))
+      validationErrors.push('Please enter a valid email address.');
+    if (!validator.isLength(req.body.password, { min: 8 }))
+      validationErrors.push('Password must be at least 8 characters long');
+    if (req.body.password !== req.body.confirmPassword)
+      validationErrors.push('Passwords do not match');
 
-  if (validationErrors.length) {
-    return res.status(400).json({ success: false, message: validationErrors });
-  }
-
-  req.body.email = validator.normalizeEmail(req.body.email, {
-    gmail_remove_dots: false,
-    all_lowercase: true,
-  });
-
-  const user = new User({
-    email: req.body.email,
-    password: req.body.password,
-  });
-
-  User.findOne({ email: user.email }, (err, existingUser) => {
-    if (err) {
-      return next(err);
+    if (validationErrors.length) {
+      return res.status(400).json({ success: false, message: validationErrors });
     }
-    if (existingUser) {
-      res.status(409).json({
-        success: false,
-        message: 'Account with that email address already exists.',
-      });
-    }
-    user.save((err) => {
+
+    req.body.email = validator.normalizeEmail(req.body.email, {
+      gmail_remove_dots: false,
+      all_lowercase: true,
+    });
+
+    const user = new User({
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    User.findOne({ email: user.email }, (err, existingUser) => {
       if (err) {
         return next(err);
       }
-      return res.status(200).json({ success: true, message: 'Sign up successful.' });
+      if (existingUser) {
+        return res.status(409).json({
+          success: false,
+          message: 'Account with that email address already exists.',
+        });
+      }
+      user.save((err) => {
+        if (err) {
+          return next(err);
+        }
+        return res.status(200).json({ success: true, message: 'Sign up successful.' });
+      });
     });
-  });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
 
 // @desc    Authenticate a user
