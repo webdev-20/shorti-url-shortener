@@ -70,7 +70,9 @@ const postLogin = async (req, res, next) => {
 
         const body = { _id: user._id, email: user.email };
         const token = jwt.sign({ user: body }, process.env.JWT_SECRET);
-        return res.status(200).json({ success: true, message: 'Log in successful.', token });
+        return res
+        .cookie('token', token, { httpOnly: true })
+        .status(200).json({ success: true, message: 'Log in successful.', token });
       });
     } catch (error) {
       res.status(500).json({ success: false, message: error.message });
@@ -78,7 +80,28 @@ const postLogin = async (req, res, next) => {
   })(req, res, next);
 };
 
+// @desc    Get user profile
+// @route   GET /api/users/profile
+// @access  Private
+const getMyProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select('-password').populate('links');
+
+    res.status(200).json({
+      success: true,
+      user 
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message 
+    });
+  }
+}
+
 module.exports = {
   postSignup,
   postLogin,
+  getMyProfile
 };
