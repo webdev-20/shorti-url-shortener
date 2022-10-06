@@ -21,6 +21,7 @@ const postSignup = (req, res, next) => {
 
   req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
+    all_lowercase: true,
   });
 
   const user = new User({
@@ -28,7 +29,7 @@ const postSignup = (req, res, next) => {
     password: req.body.password,
   });
 
-  User.findOne({ email: req.body.email }, (err, existingUser) => {
+  User.findOne({ email: user.email }, (err, existingUser) => {
     if (err) {
       return next(err);
     }
@@ -64,7 +65,7 @@ const postLogin = async (req, res, next) => {
         if (error) return next(error);
 
         const body = { _id: user._id, email: user.email };
-        const token = jwt.sign({ user: body }, 'TOP_SECRET');
+        const token = jwt.sign({ user: body }, process.env.JWT_SECRET);
         return res.status(200).json({ success: true, message: 'Log in successful.', token });
       });
     } catch (error) {

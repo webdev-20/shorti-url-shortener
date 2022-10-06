@@ -13,6 +13,7 @@ passport.use(
     },
     async (email, password, done) => {
       try {
+        email = email.toLowerCase();
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -36,7 +37,7 @@ passport.use(
 passport.use(
   new JWTstrategy(
     {
-      secretOrKey: 'TOP_SECRET',
+      secretOrKey: process.env.JWT_SECRET,
       jwtFromRequest: ExtractJWT.fromUrlQueryParameter('secret_token'),
     },
     async (token, done) => {
