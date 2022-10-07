@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className={classes.footer}>
       <div className={classes.gridContainer}>
-        <div className={classes.innerFooter}>
+        <div className={classes.innerFooterLeft}>
           <div className={classes.cell}>
             <h4>Features</h4>
             <ul>
@@ -19,6 +19,9 @@ function Footer() {
               <li>Contact</li>
             </ul>
           </div>
+        </div>
+        <div className={classes.innerFooterRight}>
+
         </div>
       </div>
     </footer>
