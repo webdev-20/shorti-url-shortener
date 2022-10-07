@@ -95,11 +95,28 @@ getLinkFromCode = async (req, res) => {
   try {
     const foundLink = await Link.findOne({ short: short });
     if (!foundLink) {
-      return res.status(500).json({ success: false, error: 'short link does not exist' });
+      return res.status(404).json({ success: false, error: 'short link does not exist' });
     }
     res.redirect(foundLink.url);
   } catch (error) {
     res.status(500).json({ success: false, error: 'server error' });
+  }
+};
+
+deleteLink = async (req, res) => {
+  const short = req.params.short;
+  try {
+    const foundLink = await Link.findOne({ short: short });
+    if (!foundLink) {
+      return res.status(404).json({ success: false, message: 'short link does not exist' });
+    }
+    await foundLink.remove({});
+    res.status(200).json({
+      success: true,
+      message: 'short link has been successfully deleted',
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'server error' });
   }
 };
 
@@ -108,4 +125,5 @@ module.exports = {
   createLink,
   editLink,
   getLinkFromCode,
+  deleteLink,
 };
