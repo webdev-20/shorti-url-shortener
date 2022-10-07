@@ -16,7 +16,13 @@ const getAllLinksInDB = async () =>{
     return links.map(link=>link.toJSON())
 }
 
+const getLinkByShort = async(short) => {
+    const foundLink = await Link.findOne({short})
+    return foundLink??null
+}
+
 module.exports = {
     initialLinks,
-    getAllLinksInDB
+    getAllLinksInDB,
+    getLinkByShort
 }
