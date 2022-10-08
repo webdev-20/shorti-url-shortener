@@ -1,0 +1,58 @@
+.shortLink_content {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between;
+  flex-wrap: wrap; */
+  font-weight: 400;
+  color: #02374f;
+  position: relative;
+}
+.shortLink_content > * {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.shortLink_title {
+  font-size: 1.75rem;
+  font-family: 'Nunito';
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.shortLink_short {
+  font-size: 1.25rem;
+  text-align: left;
+  margin: 20px 0 0 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.shortLink_short button {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  margin-left: 4px;
+}
+
+.shortLink_data {
+  font-size: 1.125rem;
+  display: flex;
+  font-weight: 400;
+  align-items: center;
+  margin: 0 40px 0 0;
+  text-align: right;
+}
+
+.shortLink_data span {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0 6px;
+  display: block;
+  color: #00afef;
+}
+
+.shortLink_ellipsis {
+  position: absolute;
+  right: -28px;
+  top: -28px;
+}

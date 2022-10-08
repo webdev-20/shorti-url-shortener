@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
 require('dotenv').config();
+const cors = require('cors');
 
 const port = process.env.PORT || 4002;
 const linksRouter = require('./src/routes/links.route');
@@ -12,6 +13,7 @@ require('./src/config/passport');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // setup swagger
 const YAML = require('yamljs');
