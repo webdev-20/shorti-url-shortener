@@ -2,10 +2,14 @@ const mongoose = require('mongoose');
 const { EXPIRY_DAYS } = require('../config');
 
 const linkSchema = new mongoose.Schema({
-  url: String,
+  url: {
+    type:String,
+    required: true
+  },
   short: {
     type: String,
     unique: true,
+    required: true
   },
   creationDate: {
     type: Date,

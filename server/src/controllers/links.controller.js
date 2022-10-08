@@ -22,13 +22,13 @@ createLink = async (req, res) => {
 
   //TODO: maybe put all the validations into it owns function, possbily in /utils
   if (!req.body.url) {
-    return res.status(500).json({
+    return res.status(422).json({
       success: false,
       message: 'URL is required.',
     });
   }
   if (!/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
-    return res.status(500).json({
+    return res.status(422).json({
       success: false,
       message: 'invalid url',
     });
@@ -58,8 +58,11 @@ createLink = async (req, res) => {
     });
     const savedLink = await link.save();
     return res.status(201).json({
-      original_url: savedLink.url,
-      short_url: savedLink.short,
+      success: true,
+      data:{
+        url: savedLink.url,
+        short: savedLink.short,
+      }
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -69,16 +72,16 @@ createLink = async (req, res) => {
 editLink = async (req, res) => {
   try {
     if (!req.body.url) {
-      return res.status(500).json({ success: false, message: 'URL is required.' });
+      return res.status(400).json({ success: false, message: 'URL is required.' });
     }
 
     const link = await Link.findOne({ short: req.params.short });
     if (!link) {
-      return res.status(500).json({ success: false, message: 'URL not found.' });
+      return res.status(404).json({ success: false, message: 'URL not found.' });
     }
 
     if (!/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
-      return res.status(500).json({ success: false, message: 'invalid url' });
+      return res.status(422).json({ success: false, message: 'invalid url' });
     }
 
     link.url = req.body.url;

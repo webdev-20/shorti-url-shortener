@@ -89,13 +89,15 @@ paths:
         content:
           application/json:
             schema:
+              required:
+                - url
               properties:
                 url:
                   type: string
-                  required: true
+                  description: original url
                 short:
                   type: string
-                  required: false
+                  description: optional custom short code. If not specified, a random code will be generated
       responses:
         201:
           description: Successfully created a (short) code for the link
@@ -157,10 +159,46 @@ paths:
                   message:
                     type: string
 
+
+  /api/links/{short}:
+    get:
+      tags:
+        - Links
+      description: Get original url from the short code
+      parameters:
+        - in: path
+          name: short
+          schema:
+            type: string
+          required: true
+          description: short code
+      responses:
+        302:
+          description: Successfully get the original URL and redirect the user
+        500:
+          description: cannot get link
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
     put:
       tags:
         - Links
-      description: Edit a link (code)
+      description: Edit the original url, given the short code
+      parameters:
+        - in: path
+          name: short
+          schema:
+            type: string
+          required: true
+          description: short code
       requestBody:
         content:
           application/json:
@@ -181,15 +219,21 @@ paths:
                 properties:
                   success:
                     type: boolean
-                  data:
-                    type: object
-                    properties:
-                      url:
-                        type: string
-                        description: original (long) link
-                      short:
-                        type: string
-                        description: shortened code of the URL
+                  message:
+                    type: string
+        400:
+          description: Url is required in body
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
         404:
           description: Url Not Found (If short is not matching)
           content:
@@ -203,25 +247,8 @@ paths:
                     type: boolean
                   message:
                     type: string
-        500:
-          description: Url is required in body
-  /api/links/{short}:
-    get:
-      tags:
-        - Links
-      description: Get original url from the short code
-      parameters:
-        - in: path
-          name: short
-          schema:
-            type: string
-          required: true
-          description: short code
-      responses:
-        302:
-          description: Successfully get the original URL and redirect the user
-        500:
-          description: cannot get link
+        422:
+          description: Invalid Url
           content:
             application/json:
               schema:

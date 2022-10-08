@@ -20,9 +20,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className={classes.innerFooterRight}>
-
-        </div>
+        <div className={classes.innerFooterRight}></div>
       </div>
     </footer>
   );
