@@ -10,11 +10,12 @@
   ],
   "scripts": {
     "client": "yarn workspace client dev",
-    "server": "yarn workspace server nodemon index.js",
+    "server": "yarn workspace server nodemon server.js",
     "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
     "prepare": "husky install",
     "format": "prettier --write .",
-    "prettier-check": "prettier --check ."
+    "prettier-check": "prettier --check .",
+    "test:server": "yarn workspace server test"
   },
   "devDependencies": {
     "husky": "^8.0.0",
