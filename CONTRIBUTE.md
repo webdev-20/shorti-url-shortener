@@ -9,6 +9,8 @@ Before working on a new feature or fix, please let everyone know so we don't wor
 3. `yarn start` to start both client and server
    `yarn client` to start client only
    `yarn server` to start server only
+   
+create and fill in server/.env and client/.env
 
 The frontend is run on port 5173 and backend is run on port 4002.
 
