@@ -1,0 +1,262 @@
+openapi: 3.0.0
+info:
+  title: The Lassie Lounge - Shorti API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4002
+tags:
+  - name: Auth
+    description: Authentication / Authorization
+  - name: Links
+    description: Add, edit, delete links
+
+
+
+
+paths:
+  /api/:
+    get:
+      description: API Root
+      responses:
+        200:
+          description: Welcome Message
+          content:
+            application/json:
+              schema:
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+
+  /api/links:
+    get:
+      tags:
+        - Links
+      description: Get all links in the database
+      responses:
+        200:
+          description: Successfully get all links
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - data
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          description: original (long) link
+                        short:
+                          type: string
+                          description: shortened code of the URL
+                        creationDate:
+                          type: string
+                          description: creation date
+                        expirationDate:
+                          type: string
+                          description: date when the link will be expired and be automatically deleted from the database
+                        id:
+                          type: string
+                          description: id of the link
+
+        500:
+          description: cannot get links (server errors)
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+
+    post:
+      tags:
+        - Links
+      description: Create a shortened link (code)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - url
+              properties:
+                url:
+                  type: string
+                  description: original url
+                short:
+                  type: string
+                  description: optional custom short code. If not specified, a random code will be generated
+      responses:
+        201:
+          description: Successfully created a (short) code for the link
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - data
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        description: original (long) link
+                      short:
+                        type: string
+                        description: shortened code of the URL
+        409:
+          description: Duplicate
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        422:
+          description: Incorrect length
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        500:
+          description: Link creation fail
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+
+
+  /api/links/{short}:
+    get:
+      tags:
+        - Links
+      description: Get original url from the short code
+      parameters:
+        - in: path
+          name: short
+          schema:
+            type: string
+          required: true
+          description: short code
+      responses:
+        302:
+          description: Successfully get the original URL and redirect the user
+        500:
+          description: cannot get link
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+    put:
+      tags:
+        - Links
+      description: Edit the original url, given the short code
+      parameters:
+        - in: path
+          name: short
+          schema:
+            type: string
+          required: true
+          description: short code
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                url:
+                  type: string
+        required: true
+      responses:
+        200:
+          description: URL updated successfully.
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - data
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        400:
+          description: Url is required in body
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        404:
+          description: Url Not Found (If short is not matching)
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        422:
+          description: Invalid Url
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string

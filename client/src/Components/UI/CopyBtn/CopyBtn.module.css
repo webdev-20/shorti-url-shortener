@@ -1,0 +1,7 @@
+.copyBtn {
+  border: 0;
+  background-color: transparent;
+  display: flex;
+  justify-items: flex-start;
+  align-items: center;
+}

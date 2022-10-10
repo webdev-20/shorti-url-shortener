@@ -1,0 +1,33 @@
+.footer {
+  background-color: #E6E6E6;
+}
+
+.innerFooterLeft {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 0;
+}
+
+.cell {
+  text-align: left;
+}
+
+.cell h4 { 
+  color: #000; 
+  margin-bottom: 10px;
+  padding-left: 40px;
+}
+
+.cell ul { 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0;
+}
+
+.cell ul li { 
+  color: #000;
+  list-style: none;
+  margin-bottom: 3px;
+  font-size: .9rem;
+}

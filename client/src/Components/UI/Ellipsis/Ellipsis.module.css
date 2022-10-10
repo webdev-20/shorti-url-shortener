@@ -1,0 +1,23 @@
+.ellipsis {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.ellipsis div {
+  width: 5px;
+  height: 5px;
+  border-radius: 99999px;
+  background-color: rgba(236, 38, 143, 0.8);
+  margin-bottom: 3px;
+  transform: scale(1);
+  transition: all 0.2s ease;
+}
+
+.ellipsis:hover div,
+.ellipsis:focus div {
+  background-color: rgba(236, 38, 143, 1);
+  transform: scale(1.15);
+}
