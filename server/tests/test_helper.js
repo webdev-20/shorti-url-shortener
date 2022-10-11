@@ -1,4 +1,5 @@
 const Link = require('../src/models/link')
+const User = require('../src/models/User')
 
 const initialLinks = [
     {
@@ -16,6 +17,11 @@ const getAllLinksInDB = async () =>{
     return links.map(link=>link.toJSON())
 }
 
+const getAllUsersInDB = async () => {
+    const users = await User.find({})
+    return users.map(user=>user.toJSON())
+}
+
 const getLinkByShort = async(short) => {
     const foundLink = await Link.findOne({short})
     return foundLink??null
@@ -24,5 +30,6 @@ const getLinkByShort = async(short) => {
 module.exports = {
     initialLinks,
     getAllLinksInDB,
+    getAllUsersInDB,
     getLinkByShort
 }

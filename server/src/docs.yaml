@@ -98,6 +98,9 @@ paths:
                 short:
                   type: string
                   description: optional custom short code. If not specified, a random code will be generated
+                title:
+                  type: string
+                  description: optional title for the URL
       responses:
         201:
           description: Successfully created a (short) code for the link
@@ -119,6 +122,9 @@ paths:
                       short:
                         type: string
                         description: shortened code of the URL
+                      title:
+                        type: string
+                        desecription: (optional) if specified
         409:
           description: Duplicate
           content:
@@ -191,7 +197,7 @@ paths:
     put:
       tags:
         - Links
-      description: Edit the original url, given the short code
+      description: Edit the original url and/or title, given the short code
       parameters:
         - in: path
           name: short
@@ -206,6 +212,10 @@ paths:
               properties:
                 url:
                   type: string
+                  require: false
+                title:
+                  type: string
+                  require: false
         required: true
       responses:
         200:
@@ -222,7 +232,7 @@ paths:
                   message:
                     type: string
         400:
-          description: Url is required in body
+          description: Url or Title is required in body
           content:
             application/json:
               schema:
@@ -235,7 +245,7 @@ paths:
                   message:
                     type: string
         404:
-          description: Url Not Found (If short is not matching)
+          description: Link Not Found (If short is not matching)
           content:
             application/json:
               schema:
