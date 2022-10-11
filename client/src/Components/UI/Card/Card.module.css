@@ -1,0 +1,16 @@
+.card {
+  border: 1px solid #cdd8db;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 4px 0px rgba(130, 195, 212, 0.25);
+  padding: 28px 32px;
+}
+.card:hover {
+  border-color: #ec268f; /*main pink*/
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.card:not(:last-of-type) {
+  margin-bottom: 12px;
+}
