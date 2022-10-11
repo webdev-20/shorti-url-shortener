@@ -55,6 +55,7 @@ createLink = async (req, res) => {
     const link = new Link({
       url: req.body.url,
       short: shortCode,
+      title: req.body.title
     });
     const savedLink = await link.save();
     return res.status(201).json({
@@ -62,6 +63,7 @@ createLink = async (req, res) => {
       data:{
         url: savedLink.url,
         short: savedLink.short,
+        title: savedLink.title
       }
     });
   } catch (error) {
@@ -71,23 +73,24 @@ createLink = async (req, res) => {
 
 editLink = async (req, res) => {
   try {
-    if (!req.body.url) {
-      return res.status(400).json({ success: false, message: 'URL is required.' });
+    if (!req.body.url && !req.body.title) {
+      return res.status(400).json({ success: false, message: 'URL or title is required.' });
     }
 
     const link = await Link.findOne({ short: req.params.short });
     if (!link) {
-      return res.status(404).json({ success: false, message: 'URL not found.' });
+      return res.status(404).json({ success: false, message: 'Link not found.' });
     }
 
-    if (!/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
+    if(req.body.url && !/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
       return res.status(422).json({ success: false, message: 'invalid url' });
     }
 
-    link.url = req.body.url;
+    link.url = req.body.url??link.url;
+    link.title = req.body.title??link.title;
     await link.save();
 
-    res.status(200).json({ success: true, message: 'URL updated successfully.' });
+    res.status(200).json({ success: true, message: 'Link updated successfully.' });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
