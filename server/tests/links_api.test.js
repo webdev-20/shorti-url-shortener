@@ -57,7 +57,7 @@ describe('GET /api/links/{short} - get original url from shortcode', () => {
 });
 
 describe('POST /api/links', () => {
-    test('a link can be added', async () => {
+    test('a link can be added, title is optional, timesClicked is defaulted to 0', async () => {
         const newLink = {
             url: 'https://www.frontendmentor.io/home'
         };
@@ -71,6 +71,13 @@ describe('POST /api/links', () => {
         const urls = links.map(l => l.url);
         expect(links).toHaveLength(helper.initialLinks.length + 1);
         expect(urls).toContain(newLink.url);
+
+        expect(res.body.success).toBe(true)
+        const short = res.body.data.short
+
+        const link = await helper.getLinkByShort(short)
+        expect(link.title).toBe(undefined)
+        expect(link.timesClicked).toBe(0)
     });
 
     test('a link can be added with a custom code', async () => {
@@ -96,6 +103,28 @@ describe('POST /api/links', () => {
         const shorts = links.map(l => l.short);
         expect(shorts).toContain(newLink.short);
     });
+
+    test('a title can be added to the link', async () => {
+        const newLink = {
+            url: "https://vitejs.dev/guide/#trying-vite-online",
+            title: 'Trying Vite'
+        };
+        const res = await api
+            .post('/api/links')
+            .send(newLink)
+            .expect(201)
+            .expect('Content-Type', /application\/json/);
+
+
+        const links = await helper.getAllLinksInDB();
+        expect(links).toHaveLength(helper.initialLinks.length + 1);
+
+        expect(res.body.success).toBe(true)
+        const short = res.body.data.short
+
+        const link = await helper.getLinkByShort(short)
+        expect(link.title).toBe(newLink.title)
+    })
 
     test('duplicate shortcode url will return an error(409)', async () => {
         const newLink = {
@@ -160,7 +189,7 @@ describe('POST /api/links', () => {
 });
 
 describe('PUT api/links/{short}', () => {
-    test('a link can be edited', async () => {
+    test('a link can be edited (url)', async () => {
         const linksAtStart = await helper.getAllLinksInDB();
         const linkToEdit = linksAtStart[0];
         const newUrl = {
@@ -180,7 +209,49 @@ describe('PUT api/links/{short}', () => {
         expect(updatedLinkInDb.url).toBe(newUrl.url);
     });
 
-    test('a link without url will return an error (400)', async () => {
+    test('a link can be edited (title)', async () => {
+        const linksAtStart = await helper.getAllLinksInDB();
+        const linkToEdit = linksAtStart[0];
+        const newUrl = {
+            title: 'GraphQL'
+        };
+
+        const res = await api
+            .put(`/api/links/${linkToEdit.short}`)
+            .send(newUrl)
+            .expect(200)
+            .expect('Content-Type', /application\/json/);
+
+        expect(res.body.success).toBe(true);
+        const links = await helper.getAllLinksInDB();
+        expect(links).toHaveLength(helper.initialLinks.length);
+        const updatedLinkInDb = await helper.getLinkByShort(linkToEdit.short);
+        expect(updatedLinkInDb.title).toBe(newUrl.title);
+    });
+
+    test('a link can be edited (url and title)', async () => {
+        const linksAtStart = await helper.getAllLinksInDB();
+        const linkToEdit = linksAtStart[0];
+        const newUrl = {
+            url: 'https://graphql.org/',
+            title: 'GraphQL'
+        };
+
+        const res = await api
+            .put(`/api/links/${linkToEdit.short}`)
+            .send(newUrl)
+            .expect(200)
+            .expect('Content-Type', /application\/json/);
+
+        expect(res.body.success).toBe(true);
+        const links = await helper.getAllLinksInDB();
+        expect(links).toHaveLength(helper.initialLinks.length);
+        const updatedLinkInDb = await helper.getLinkByShort(linkToEdit.short);
+        expect(updatedLinkInDb.title).toBe(newUrl.title);
+        expect(updatedLinkInDb.url).toBe(newUrl.url);
+    });
+
+    test('post body without url and title will return an error (400)', async () => {
         const short = initialLinks[0].short;
         const newUrl = {};
         const res = await api
