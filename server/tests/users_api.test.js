@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const supertest = require('supertest');
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const app = require('../app');
-const User = require('../src/models/user');
+const User = require('../src/models/User');
 const helper = require('./test_helper');
 
 require("dotenv").config();
