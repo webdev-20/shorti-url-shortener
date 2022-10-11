@@ -22,10 +22,10 @@ function Navbar() {
         </ul>
         <ul className={classes.loginRegister}>
           <li>
-            <NavLink to="/">Login</NavLink>
+            <NavLink to="/login">Login</NavLink>
           </li>
           <li>
-            <NavLink to="/">Register</NavLink>
+            <NavLink to="/register">Register</NavLink>
           </li>
         </ul>
       </nav>

@@ -1,0 +1,25 @@
+.login__container{
+    max-width: 100%;
+    padding: 1.5em 2.3em;
+}
+.form__container{
+    padding: 1.5em 2.3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+input{
+    margin: 18px 15px;
+    padding: 8px 32px;
+    border-radius: 15px;
+    border: 1px solid rgb(144, 144, 144);
+}
+button{
+     padding: 8px 32px;
+    border-radius: 15px;
+    border: 1px solid rgb(144, 144, 144);
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
