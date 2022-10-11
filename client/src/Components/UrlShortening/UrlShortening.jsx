@@ -31,7 +31,7 @@ function UrlShortening() {
           className={classes.urlInput}
           ref={urlInputRef}
           placeholder="url here"
-          type="url"
+          type="text"
           autoComplete="off"
           autoFocus="on"
           onChange={validate}
