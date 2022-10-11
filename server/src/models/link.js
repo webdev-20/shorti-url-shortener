@@ -11,6 +11,13 @@ const linkSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
+  title:{
+    type: String
+  },
+  timesClicked: {
+    type:Number,
+    default: 0
+  },
   creationDate: {
     type: Date,
     default: Date.now,
