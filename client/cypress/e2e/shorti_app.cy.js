@@ -1,13 +1,13 @@
 describe('Onload', function () {
   it('Front page can be opened', function () {
-    cy.visit('http://localhost:5173');
+    cy.visit('/');
     cy.get('#urlInput').should('be.visible');
     // TODO: login and register should be visible if not logged in
     // TODO: logout should be visible if logged in ( login register, should not be visible)
   });
 
   it('always gets new data on load', () => {
-    cy.visit('http://localhost:5173');
+    cy.visit('/');
     cy.intercept('GET', '**/api/links', (req) => {
       delete req.headers['if-none-match'];
     }).as('getLinks');
