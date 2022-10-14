@@ -15,7 +15,9 @@
     "prepare": "husky install",
     "format": "prettier --write .",
     "prettier-check": "prettier --check .",
-    "test:server": "yarn workspace server test"
+    "test:server": "yarn workspace server test",
+    "test:client": "yarn workspace client cypress",
+    "test": "concurrently --kill-others-on-fail \"yarn test:server\"  \"yarn test:client\""
   },
   "devDependencies": {
     "husky": "^8.0.0",
