@@ -1,5 +1,8 @@
 .footer {
-  background-color: #E6E6E6;
+  background: rgb(10,14,36);
+  background: linear-gradient(90deg, rgba(10,14,36,1) 0%, rgba(0,64,87,1) 50%);
+  border-top: 12px solid transparent;
+  border-image: linear-gradient(90deg, rgba(236,38,143,1) 9.85%, rgba(0,175,239,1) 47.02%, rgba(9,245,134,1) 73.5%, rgba(255,242,18,1) 97.19%) 1;
 }
 
 .innerFooterLeft {
@@ -13,9 +16,10 @@
 }
 
 .cell h4 { 
-  color: #000; 
+  color: #02BBFF; 
   margin-bottom: 10px;
   padding-left: 40px;
+  text-transform: uppercase;
 }
 
 .cell ul { 
@@ -26,7 +30,7 @@
 }
 
 .cell ul li { 
-  color: #000;
+  color: #FFF;
   list-style: none;
   margin-bottom: 3px;
   font-size: .9rem;

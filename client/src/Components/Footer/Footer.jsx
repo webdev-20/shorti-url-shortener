@@ -8,8 +8,8 @@ function Footer() {
           <div className={classes.cell}>
             <h4>Features</h4>
             <ul>
-              <li>Link Shortening</li>
-              <li>Link Management</li>
+              <li>Shortening URL</li>
+              <li>URL Management</li>
             </ul>
           </div>
           <div className={classes.cell}>
