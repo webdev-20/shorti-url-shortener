@@ -1,10 +1,10 @@
-# the-lassie-lounge-hacktoberfest-project-2022
+# The Lassie Lounge URL Shortener 
 
 Hacktoberfest Project
 
 # The project
 
-URL shortener (to be confirmed)
+URL shortener 
 
 ## Tech Stack
 
@@ -13,22 +13,17 @@ URL shortener (to be confirmed)
 - Mongo
 - Express
 
-## Features
+## Features 
+please check the pinned issue
 
-### Core Feature(s)
-
-- Users can shorten and unshorten a URL
-- responsive (desktop and mobile)
-
-### Additional Feature (if we have time)
-
-- User Accounts
--
+## Live site
+https://shorti.onrender.com/
 
 ## Design
+https://www.figma.com/file/SP0iLbONWkjZ0cTlpBwSPR/Shorti-Copy?node-id=0%3A1
 
-Figma link:
-API Docs: http://localhost:4002/api/docs/
+## API Docs: 
+http://localhost:4002/api/docs/
 
 # Contributors
 
