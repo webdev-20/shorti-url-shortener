@@ -5,6 +5,7 @@ on:
   pull_request_target:
     branches: [ "main" ]
     types: [opened, reopened]
+  workflow_dispatch:
 jobs:
   cypress-run:
     runs-on: ubuntu-20.04
