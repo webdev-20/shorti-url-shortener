@@ -16,7 +16,7 @@ function Footer() {
             <h4>About Us</h4>
             <ul>
               <li>Our Team</li>
-              <li>Contact</li>
+              <li>Contact Us</li>
             </ul>
           </div>
         </div>

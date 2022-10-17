@@ -1,14 +1,16 @@
 .footer {
+  width: 100vw;
+  height: 219px;
   background: rgb(10,14,36);
-  background: linear-gradient(90deg, rgba(10,14,36,1) 0%, rgba(0,64,87,1) 50%);
+  background: linear-gradient(90deg, rgba(10,14,36,1) 0%, rgba(0,64,87,1) 90%);
   border-top: 12px solid transparent;
-  border-image: linear-gradient(90deg, rgba(236,38,143,1) 9.85%, rgba(0,175,239,1) 47.02%, rgba(9,245,134,1) 73.5%, rgba(255,242,18,1) 97.19%) 1;
+  border-image: linear-gradient(35deg, rgba(236,38,143,1) 9.85%, rgba(0,175,239,1) 57.02%, rgba(9,245,134,1) 73.5%, rgba(255,242,18,1) 97.19%) 1;
 }
 
 .innerFooterLeft {
   display: flex;
   justify-content: flex-start;
-  padding: 10px 0;
+  padding: 26px 0;
 }
 
 .cell {
@@ -16,9 +18,11 @@
 }
 
 .cell h4 { 
-  color: #02BBFF; 
-  margin-bottom: 10px;
-  padding-left: 40px;
+  color: #02BBFF;
+  letter-spacing: 5px;
+  font-size: 19px; 
+  margin-bottom: 20px;
+  padding-left: 148px;
   text-transform: uppercase;
 }
 
@@ -27,11 +31,12 @@
   flex-direction: column;
   align-items: flex-start;
   margin-top: 0;
+  padding-left: 148px;
 }
 
 .cell ul li { 
-  color: #FFF;
+  color: rgba(255, 255, 255, 0.80);
   list-style: none;
-  margin-bottom: 3px;
-  font-size: .9rem;
+  margin-bottom: 12px;
+  font-size: 18px;
 }
