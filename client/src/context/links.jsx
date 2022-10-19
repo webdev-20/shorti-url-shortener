@@ -1,11 +1,6 @@
-import { linksReducer } from './linksReducer.js';
+import { linksReducer, initialState } from './linksReducer.js';
 import { createContext, useContext, useReducer } from 'react';
 import linksServices from '../services/links.js';
-
-const initialState = {
-  links: [],
-  user: null,
-};
 
 export const LinksContext = createContext(initialState);
 
@@ -36,7 +31,7 @@ export const LinksProvider = ({ children }) => {
   return (
     <LinksContext.Provider
       value={{
-        links: state.links,
+        state,
         addLink,
         getLinks,
       }}

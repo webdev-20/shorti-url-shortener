@@ -8,6 +8,7 @@ const ShortLinkList = () => {
   const [message, setMessage] = useState(null);
   const links = useLinks();
 
+  // TODO: make it read from the state
   useEffect(() => {
     links
       .getLinks()
@@ -23,7 +24,7 @@ const ShortLinkList = () => {
   }, []);
 
   let shortLinks = useMemo(() => {
-    return shortLinkList?.map((sl) => {
+    return links.state.links?.map((sl) => {
       if (sl.short) {
         return (
           <ShortLink key={sl.id}>
