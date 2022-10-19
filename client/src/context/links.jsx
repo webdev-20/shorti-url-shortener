@@ -12,6 +12,7 @@ export const LinksProvider = ({ children }) => {
     // TODO: probably have to add user, and get only links created by that user
     // (when users are linked to links)
     const allLinks = await linksServices.getAll();
+
     await dispatch({
       type: 'GET_LINKS',
       payload: { links: allLinks.data },
