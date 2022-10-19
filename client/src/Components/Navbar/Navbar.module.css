@@ -6,7 +6,7 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  margin: 77px 148px;
+  margin: 77px 406px 77px 370px;
 }
 
 .nav .logo {
@@ -20,7 +20,7 @@
 }
 
 .nav a {
-  color: inherit;
+  color:  inherit;
   letter-spacing: 2px;
 }
 
@@ -30,10 +30,11 @@
   border-radius: 999px;
   text-decoration: none;
   padding: 8px 20px;
+  transition: letter-spacing 0.25s;
 }
 
 .nav .signup {
-  margin-right: 18px;
+  margin-right: 1.2em;
 }
 
 .nav .login {
@@ -42,5 +43,6 @@
 
 .nav .loginRegister a:hover,
 .nav .loginRegister a:focus {
+  letter-spacing: 3px;
   background-color: #EC268F;
 }
