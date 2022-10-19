@@ -1,15 +1,18 @@
 import { Fragment, useEffect, useState, useMemo } from 'react';
 import LinkServices from './../../services/links';
 import { ShortLink } from './ShortLink';
+import { useLinks } from '../../context/links';
 
 const ShortLinkList = () => {
   const [shortLinkList, setShortLinkList] = useState(null);
   const [message, setMessage] = useState(null);
+  const links = useLinks();
 
   useEffect(() => {
-    LinkServices.getAll()
+    links
+      .getLinks()
       .then((res) => {
-        setShortLinkList(res.data);
+        setShortLinkList(res);
       })
       .catch((error) => {
         setMessage({ text: 'Could Not Retrieve Link List', status: 'error' });

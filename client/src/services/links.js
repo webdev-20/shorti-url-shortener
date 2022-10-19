@@ -1,10 +1,10 @@
 import axios from 'axios';
+import { serverUrl } from '../utils/config.js';
 
 const baseURL = '/api/links';
-const localUrl = import.meta.env.VITE_LOCAL_URL || 'http://localhost:4002';
 
 const getAll = () => {
-  const request = axios.get(`${localUrl}${baseURL}`);
+  const request = axios.get(`${serverUrl}${baseURL}`);
   return request.then((res) => res.data);
 };
 

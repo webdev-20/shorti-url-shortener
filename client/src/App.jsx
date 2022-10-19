@@ -4,15 +4,21 @@ import UrlShortening from './Components/UrlShortening/UrlShortening';
 import ShortLinkList from './Components/ShortLinks/ShortLinksList';
 
 import './App.css';
+import { LinksProvider } from './context/links';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <UrlShortening />
-      <ShortLinkList />
-      <Footer />
-    </div>
+    <LinksProvider>
+      s
+      <div className="App">
+        <Navbar />
+        <UrlShortening />
+
+        <DashboardPage />
+        <Footer />
+      </div>
+    </LinksProvider>
   );
 }
 
