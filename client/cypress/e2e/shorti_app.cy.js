@@ -35,13 +35,14 @@ describe('enter url', function () {
     cy.get('input').type('www.google.com');
     cy.get('form').submit();
     // TODO: add tests for api call
-    cy.get('p').contains(/^Valid URL$/);
+    cy.get('p').contains(/^valid$/);
   });
   it('invalid url - no api call', () => {
     cy.get('input').clear();
     cy.get('input').type('google');
     cy.get('form').submit();
     // TODO: add tests for no api call
-    cy.get('p').contains(/^Invalid URL$/);
+    // this is a temporary condition till we decide on a better way to show if url is valid
+    cy.get('p').contains(/^invalid$/);
   });
 });

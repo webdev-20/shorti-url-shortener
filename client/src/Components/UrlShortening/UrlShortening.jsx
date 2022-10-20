@@ -1,31 +1,25 @@
 import { useRef, useState } from 'react';
 import classes from './UrlShortening.module.css';
 import isURL from 'validator/lib/isURL';
-import linksServices from '../../services/links.js';
 import { useLinks } from '../../context/links.jsx';
 
 function UrlShortening() {
   const urlInputRef = useRef();
   const [val, setVal] = useState('');
-  // TODO: should probably refactor it to use another variable name as
-  // "valid url" is not an err
-  const [err, setErr] = useState('');
+  const [isValidUrl, setIsValidUrl] = useState(false);
   const links = useLinks();
 
   async function submitHandler(event) {
     event.preventDefault();
-    const enteredUrl = urlInputRef.current.value;
-    await links.addLink({ url: enteredUrl });
-    //await linksServices.createLink()
+    if (isValidUrl) {
+      const enteredUrl = urlInputRef.current.value;
+      await links.addLink({ url: enteredUrl });
+    }
   }
 
   const validate = (e) => {
     setVal(e.target.value);
-    if (isURL(val)) {
-      setErr('Valid URL');
-    } else {
-      setErr('Invalid URL');
-    }
+    setIsValidUrl(isURL(val));
   };
 
   return (
@@ -41,12 +35,8 @@ function UrlShortening() {
           autoFocus="on"
           onChange={validate}
         ></input>
-        <p>{err}</p>
-        <button
-          type="submit"
-          className={classes.shortenBtn}
-          disabled={!val || err === 'Invalid URL'}
-        >
+        <p>{isValidUrl ? 'valid' : 'invalid'}</p>
+        <button type="submit" className={classes.shortenBtn} disabled={!val || !isValidUrl}>
           Shorten It!
         </button>
       </form>
