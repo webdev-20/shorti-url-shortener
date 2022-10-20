@@ -21,12 +21,16 @@ export const LinksProvider = ({ children }) => {
     return allLinks.data;
   };
 
-  const addLink = (link) => {
-    //api call
-    dispatch({
-      type: 'ADD_LINK',
-      payload: link,
-    });
+  const addLink = async (link) => {
+    const res = await linksServices.createLink(link);
+    if (res.success === true) {
+      dispatch({
+        type: 'ADD_LINK',
+        payload: res.data,
+      });
+    } else {
+      console.log('create Link Failed');
+    }
   };
 
   return (

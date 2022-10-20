@@ -8,6 +8,16 @@ const getAll = () => {
   return request.then((res) => res.data);
 };
 
+const createLink = async (link) => {
+  try {
+    const res = await axios.post(`${serverUrl}${baseURL}`, link);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default {
   getAll,
+  createLink,
 };

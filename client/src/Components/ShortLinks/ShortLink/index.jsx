@@ -24,9 +24,12 @@ const Content = ({ shortLink }) => {
           )}
 
           <p className={classes.shortLink_data}>
-            been clicked <span>20</span> times
+            been clicked <span>{shortLink.timesClicked}</span> times
           </p>
           <Ellipsis addlClasses={[classes.shortLink_ellipsis]} />
+        </div>
+        <div>
+          {shortLink.url.length > 50 ? `${shortLink.url.substring(0, 50)}...` : `${shortLink.url}`}
         </div>
         <div>
           <p className={classes.shortLink_short}>
