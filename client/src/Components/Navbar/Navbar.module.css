@@ -1,16 +1,16 @@
 .header {
   width: 100%;
-  height: 10rem;
+  height: 10em;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
-  margin: 77px 148px;
+  margin: 4.3em 24.475em 2.8125em 23.125em;
 }
 
 .nav .logo {
-  margin-top: -40px;
+  margin-top: -2.5em;
 }
 
 .nav ul {
@@ -20,20 +20,22 @@
 }
 
 .nav a {
-  color: inherit;
-  letter-spacing: 2px;
+  color:  inherit;
+  letter-spacing: 0.125em;
 }
 
 .nav .loginRegister a {
-  font-size: 18px;
-  border: 2px solid #EC268F;
-  border-radius: 999px;
+  font-size: 1.125em;
+  border: 0.125em solid #EC268F;
+  border-radius: 62.4375em;
   text-decoration: none;
-  padding: 8px 20px;
+  padding: 0.3em 1em 0.5em 1em;
+  margin-top: -2.75em;
+  transition: letter-spacing 0.25s;
 }
 
 .nav .signup {
-  margin-right: 18px;
+  margin-right: 1.2em;
 }
 
 .nav .login {
@@ -42,5 +44,16 @@
 
 .nav .loginRegister a:hover,
 .nav .loginRegister a:focus {
+  letter-spacing: 0.1875em;
   background-color: #EC268F;
+}
+
+@media screen and (max-width: 1440px) {
+  .logo {
+    margin-left: -16em;
+  }
+
+  .loginRegister {
+    margin-right: -16em;
+  }
 }
