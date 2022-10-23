@@ -12,7 +12,7 @@ function Footer() {
               <li>URL Management</li>
             </ul>
           </div>
-          <div id="cellRight" className={classes.cell}>
+          <div className={classes.cell}>
             <h4>About Us</h4>
             <ul>
               <li>Our Team</li>

@@ -5,7 +5,7 @@
   text-align: center;
   background: url(https://raw.githubusercontent.com/nancyfontanez/shorti-url-shortener/style/navbarmockup/client/public/images/jack-b-lKvN0xV4jeA-unsplash%201.png);
   background-repeat: round;
-  height: 864px;
-  border-bottom: 2px solid transparent;
+  height: 54em;
+  border-bottom: 0.125em solid transparent;
   border-image: linear-gradient(93deg, rgba(236,38,143,1) 0%, rgba(0,175,239,1) 50%, rgba(0,168,89,1) 75%, rgba(255,242,18,1) 100%) 1;
 }
