@@ -34,7 +34,7 @@ function UrlShortening() {
       <hr className={classes.lineFour}></hr>
       <hr className={classes.lineFive}></hr>
       <span className={classes.creationImg}>
-        <img src="https://via.placeholder.com/347x428" alt="" />
+        <img src="/public/images/347x428.png" alt="" />
       </span>
       <form className={classes.form} onSubmit={submitHandler}>
         <input
