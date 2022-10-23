@@ -10,11 +10,7 @@ function Navbar() {
           <li> */}
         {/* temporary Logo placeholder */}
         <div className={classes.logo}>
-          <img
-            src="https://raw.githubusercontent.com/webdev-20/shorti-url-shortener/96674d3d05ebd8d4f98b613bbd165f7ebe2f7056/client/public/images/shorti.svg"
-            width={247}
-            height={115}
-          ></img>
+          <img src="/public/images/shorti.svg" width={247} height={115}></img>
         </div>
         {/* </li>
           <li className={classes.featuresPricing}>
