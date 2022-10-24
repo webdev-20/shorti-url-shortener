@@ -1,44 +1,59 @@
 .header {
   width: 100%;
-  height: 5rem;
+  height: 10em;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
+  margin: 4.3em 24.475em 2.8125em 23.125em;
 }
 
 .nav .logo {
-  padding-right: 10px;
+  margin-top: -2.5em;
 }
 
 .nav ul {
   list-style: none;
   display: flex;
-  margin: 0;
   padding: 0;
 }
 
-.nav li {
-  font-size: 1.25rem;
-}
-
 .nav a {
-  color: inherit;
-}
-
-.nav .featuresPricing {
-  font-size: 0.8rem;
-  padding-right: 10px;
-  color: blue;
+  color:  inherit;
+  letter-spacing: 0.125em;
 }
 
 .nav .loginRegister a {
+  font-size: 1.125em;
+  border: 0.125em solid #EC268F;
+  border-radius: 62.4375em;
   text-decoration: none;
-  padding-left: 10px;
+  padding: 0.3em 1em 0.5em 1em;
+  margin-top: -2.75em;
+  transition: letter-spacing 0.25s;
+}
+
+.nav .signup {
+  margin-right: 1.2em;
+}
+
+.nav .login {
+  background-color: #EC268F;
 }
 
 .nav .loginRegister a:hover,
 .nav .loginRegister a:focus {
-  color: green;
+  letter-spacing: 0.1875em;
+  background-color: #EC268F;
+}
+
+@media screen and (max-width: 1440px) {
+  .logo {
+    margin-left: -16em;
+  }
+
+  .loginRegister {
+    margin-right: -16em;
+  }
 }
