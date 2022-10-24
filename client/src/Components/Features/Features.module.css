@@ -1,0 +1,9 @@
+.features {
+    width: 100vw;
+    height: 54em;
+    margin-top: -7.75em;
+    background: #e5e5e5;
+    border-top: 2em solid transparent;
+    border-image: linear-gradient(90deg, rgba(10,14,36,1) 0%, rgba(0,64,87,1) 90%) 1;
+  }
+  

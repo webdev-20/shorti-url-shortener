@@ -2,6 +2,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import UrlShortening from './Components/UrlShortening/UrlShortening';
 import ShortLinkList from './Components/ShortLinks/ShortLinksList';
+import Features from './Components/Features/Features';
 
 import './App.css';
 
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <Navbar />
       <UrlShortening />
+      <Features />
       <ShortLinkList />
       <Footer />
     </div>
