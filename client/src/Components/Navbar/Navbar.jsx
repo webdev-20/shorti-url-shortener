@@ -10,7 +10,7 @@ function Navbar() {
           <li> */}
         {/* temporary Logo placeholder */}
         <div className={classes.logo}>
-          <img src="/public/images/shorti.svg" width={247} height={115}></img>
+          <img src="/images/shorti.svg" width={247} height={115}></img>
         </div>
         {/* </li>
           <li className={classes.featuresPricing}>
