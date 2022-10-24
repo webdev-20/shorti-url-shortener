@@ -8,7 +8,12 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: rgb(11,17,47);
+  background: -moz-radial-gradient(circle, rgba(11,17,47,1) 0%, rgba(19,27,71,1) 50%);
+  background: -webkit-radial-gradient(circle, rgba(11,17,47,1) 0%, rgba(19,27,71,1) 50%);
+  background: radial-gradient(circle, rgba(11,17,47,1) 0%, rgba(19,27,71,1) 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0b112f",endColorstr="#131b47",GradientType=1);
+  
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

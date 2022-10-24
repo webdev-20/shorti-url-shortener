@@ -6,26 +6,30 @@ function Navbar() {
   return (
     <header className={classes.header}>
       <nav className={classes.nav}>
-        <ul>
-          <li>
-            {/* temporary Logo placeholder */}
-            <NavLink to="/" className={classes.logo}>
-              Logo
-            </NavLink>
-          </li>
+        {/* <ul>
+          <li> */}
+        {/* temporary Logo placeholder */}
+        <div className={classes.logo}>
+          <img src="/public/images/shorti.svg" width={247} height={115}></img>
+        </div>
+        {/* </li>
           <li className={classes.featuresPricing}>
             <NavLink to="/">Features</NavLink>
           </li>
           <li className={classes.featuresPricing}>
             <NavLink to="/">Pricing</NavLink>
           </li>
-        </ul>
+        </ul> */}
         <ul className={classes.loginRegister}>
           <li>
-            <NavLink to="/">Login</NavLink>
+            <NavLink to="/" className={classes.signup}>
+              Sign Up
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/">Register</NavLink>
+            <NavLink to="/" className={classes.login}>
+              Login
+            </NavLink>
           </li>
         </ul>
       </nav>
