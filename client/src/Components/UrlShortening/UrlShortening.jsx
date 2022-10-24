@@ -25,12 +25,23 @@ function UrlShortening() {
 
   return (
     <div className={classes.UrlShortening}>
+      <div className={classes.sloganTop}>Making Sharing</div>
+      <div className={classes.sloganBottom}>Easy &nbsp;&nbsp; Beautiful</div>
+      <span className={classes.and}>&</span>
+      <hr className={classes.lineOne}></hr>
+      <hr className={classes.lineTwo}></hr>
+      <hr className={classes.lineThree}></hr>
+      <hr className={classes.lineFour}></hr>
+      <hr className={classes.lineFive}></hr>
+      <span className={classes.creationImg}>
+        <img src="/public/images/347x428.png" alt="" />
+      </span>
       <form className={classes.form} onSubmit={submitHandler}>
         <input
           id="urlInput"
           className={classes.urlInput}
           ref={urlInputRef}
-          placeholder="url here"
+          placeholder="Your long, unattractive URL goes here"
           type="text"
           autoComplete="off"
           autoFocus="on"
@@ -38,7 +49,7 @@ function UrlShortening() {
         ></input>
         <p>{err}</p>
         <button type="submit" className={classes.shortenBtn} disabled={!val || err !== 'Valid URL'}>
-          Shorten It!
+          Shorten!
         </button>
       </form>
     </div>

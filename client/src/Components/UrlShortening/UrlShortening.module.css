@@ -1,39 +1,148 @@
 .UrlShortening {
-  background-color: green;
   max-width: 100%;
-  padding: 1.5em 2.3em;
+  padding-left: 23.75em;
+}
+
+.sloganTop, .sloganBottom, .and {
+  display: flex;
+  justify-content: flex-start;
+  font-family: 'Nunito';
+  font-size: 3.625em;
+  letter-spacing: 0.09em;
+  font-weight: 600;
+}
+
+.sloganTop {
+  margin-top: 1.5em;
+}
+
+.sloganBottom {
+font-size: 4.25em;
+padding: 1em 0;
+background: #00AFEF;
+background: -webkit-linear-gradient(to right, #00AFEF 0%, #17F680 15%, #FFF212 39%);
+background: -moz-linear-gradient(to right, #00AFEF 0%, #17F680 15%, #FFF212 39%);
+background: linear-gradient(to right, #00AFEF 0%, #17F680 15%, #FFF212 39%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.and {
+  position: absolute;
+  top: 4.77em;
+  left: 8.4em;
+  font-size: 4.25em;
+  padding-top: 1.25em;
+}
+
+hr {
+  position: relative;
+  height: 0.25em;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 0.3125em;
+}
+
+.lineOne {
+  top: -1em;
+  left: -42.9em;
+  width: 11em;
+}
+
+.lineTwo {
+  top: -0.4em;
+  left: -28.5em;
+  width: 27.5em;
+}
+
+.lineThree {
+  top: 0.2em;
+  left: -15.4em;
+  width: 11em;
+}
+
+.lineFour {
+  top: -20.5em;
+  left: 16em;
+  width: 5.75em;
+}
+
+.lineFive {
+  top: -20em;
+  left: 20.5em;
+  width: 6.9375em;
+}
+
+.creationImg {
+  position: relative;
+  top: -7em;
+  left: 15em;
 }
 
 .form {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  margin: -20em 0 15em 0;
 }
 
 .urlInput {
+  font-family: 'Barlow';
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 0.6em 1.2em;
-  font-size: 1em;
-  border-radius: 2px;
-  width: 30rem;
-  max-width: 100%;
-  margin-right: 30px;
+  font-size: 1.375em;
+  font-weight: lighter;
+  border-radius: 0.3125em 0 0 0.3125em;
+  width: 18.2em;
+  border: 0.15em solid #02BBFF;
+}
+
+.urlInput:focus {
+  outline: none;
+  box-shadow: none;
+  border: 0.1875em solid #039ed6;
 }
 
 .shortenBtn {
-  border-radius: 2px;
+  font-family: 'Nunito';
+  font-size: 1.375em;
+  font-weight: 700;
+  letter-spacing: 0.125em;
+  border: 0.0625em solid #02BBFF;
+  border-radius: 0 0.3125em 0.3125em 0;
   color: black;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: whitesmoke;
+  padding: 0.8em;
+  background: rgb(0,175,239);
+  background: -moz-linear-gradient(41deg, rgba(0,175,239,1) 0%, rgba(9,245,134,1) 59%, rgba(255,242,18,1) 100%);
+  background: -webkit-linear-gradient(41deg, rgba(0,175,239,1) 0%, rgba(9,245,134,1) 59%, rgba(255,242,18,1) 100%);
+  background: linear-gradient(41deg, rgba(0,175,239,1) 0%, rgba(9,245,134,1) 59%, rgba(255,242,18,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00afef",endColorstr="#fff212",GradientType=1);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: color 0.25s;
+}
+
+::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .shortenBtn:hover,
 .shortenBtn:focus {
-  background-color: black;
-  border-color: black;
   color: whitesmoke;
+}
+
+@media screen and (max-width: 1440px) {
+  .sloganBottom {
+    margin-left: -3.75em;
+  }
+
+  .sloganTop {
+    margin-left: -4.4em;
+  }
+
+  .and {
+    left: 4.65em;
+  }
+
+  .form {
+    margin-left: -15.50em;
+  }
 }
