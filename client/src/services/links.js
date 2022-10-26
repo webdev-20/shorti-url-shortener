@@ -1,13 +1,23 @@
 import axios from 'axios';
+import { serverUrl } from '../utils/config.js';
 
 const baseURL = '/api/links';
-const localUrl = import.meta.env.VITE_LOCAL_URL || 'http://localhost:4002';
 
 const getAll = () => {
-  const request = axios.get(`${localUrl}${baseURL}`);
+  const request = axios.get(`${serverUrl}${baseURL}`);
   return request.then((res) => res.data);
+};
+
+const createLink = async (link) => {
+  try {
+    const res = await axios.post(`${serverUrl}${baseURL}`, link);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default {
   getAll,
+  createLink,
 };
