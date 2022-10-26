@@ -32,7 +32,7 @@ const ShortLinkList = () => {
     });
   }, [links.state.links]);
 
-  return <Fragment>{shortLinks ? shortLinks : 'Loading State Here'}</Fragment>;
+  return <Fragment>{shortLinks ? shortLinks : 'Loading state here'}</Fragment>;
 };
 
 export default ShortLinkList;
