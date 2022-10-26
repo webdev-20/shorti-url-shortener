@@ -60,11 +60,7 @@ createLink = async (req, res) => {
     const savedLink = await link.save();
     return res.status(201).json({
       success: true,
-      data:{
-        url: savedLink.url,
-        short: savedLink.short,
-        title: savedLink.title
-      }
+      data:savedLink //TODO: update return type on swagger
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

@@ -124,6 +124,12 @@ hr {
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* Temporary styles for disabled button */
+.shortenBtn:disabled{
+  border: 2px solid red;
+  color: red;
+}
+
 .shortenBtn:hover,
 .shortenBtn:focus {
   color: whitesmoke;

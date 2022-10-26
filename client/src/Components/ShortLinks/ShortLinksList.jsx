@@ -1,16 +1,16 @@
 import { Fragment, useEffect, useState, useMemo } from 'react';
-import LinkServices from './../../services/links';
 import { ShortLink } from './ShortLink';
+import { useLinks } from '../../context/links';
 
 const ShortLinkList = () => {
-  const [shortLinkList, setShortLinkList] = useState(null);
   const [message, setMessage] = useState(null);
+  const links = useLinks();
 
+  // TODO: make it read from the state
   useEffect(() => {
-    LinkServices.getAll()
-      .then((res) => {
-        setShortLinkList(res.data);
-      })
+    links
+      .getLinks()
+      .then((res) => {})
       .catch((error) => {
         setMessage({ text: 'Could Not Retrieve Link List', status: 'error' });
         setTimeout(() => {
@@ -20,7 +20,7 @@ const ShortLinkList = () => {
   }, []);
 
   let shortLinks = useMemo(() => {
-    return shortLinkList?.map((sl) => {
+    return links.state.links?.map((sl) => {
       if (sl.short) {
         return (
           <ShortLink key={sl.id}>
@@ -30,7 +30,7 @@ const ShortLinkList = () => {
       }
       return;
     });
-  }, [shortLinkList]);
+  }, [links.state.links]);
 
   return <Fragment>{shortLinks ? shortLinks : 'Loading State Here'}</Fragment>;
 };

@@ -1,26 +1,25 @@
 import { useRef, useState } from 'react';
 import classes from './UrlShortening.module.css';
 import isURL from 'validator/lib/isURL';
+import { useLinks } from '../../context/links.jsx';
 
 function UrlShortening() {
   const urlInputRef = useRef();
-
-  function submitHandler(event) {
-    event.preventDefault();
-    const enteredUrl = urlInputRef.current.value;
-    console.log(enteredUrl);
-  }
-
   const [val, setVal] = useState('');
-  const [err, setErr] = useState('');
+  const [isValidUrl, setIsValidUrl] = useState(false);
+  const links = useLinks();
+
+  async function submitHandler(event) {
+    event.preventDefault();
+    if (isValidUrl) {
+      const enteredUrl = urlInputRef.current.value;
+      await links.addLink({ url: enteredUrl });
+    }
+  }
 
   const validate = (e) => {
     setVal(e.target.value);
-    if (isURL(val)) {
-      setErr('Valid URL');
-    } else {
-      setErr('Invalid URL');
-    }
+    setIsValidUrl(isURL(val));
   };
 
   return (
@@ -47,9 +46,9 @@ function UrlShortening() {
           autoFocus="on"
           onChange={validate}
         ></input>
-        <p>{err}</p>
-        <button type="submit" className={classes.shortenBtn} disabled={!val || err !== 'Valid URL'}>
-          Shorten!
+        <p>{isValidUrl ? 'valid' : 'invalid'}</p>
+        <button type="submit" className={classes.shortenBtn} disabled={!val || !isValidUrl}>
+          Shorten It!
         </button>
       </form>
     </div>
