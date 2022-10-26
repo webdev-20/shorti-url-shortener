@@ -34,7 +34,7 @@ function UrlShortening() {
       <hr className={classes.lineFour}></hr>
       <hr className={classes.lineFive}></hr>
       <span className={classes.creationImg}>
-        <img src="/images/creation-image-removebg.png" width={387} height={428} />
+        <img src="/images/undraw_creation_re_d1mi 1.png" height={457} />
       </span>
       <form className={classes.form} onSubmit={submitHandler}>
         <input
