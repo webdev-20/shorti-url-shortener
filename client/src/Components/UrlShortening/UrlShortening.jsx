@@ -19,7 +19,7 @@ function UrlShortening() {
 
   const validate = (e) => {
     setVal(e.target.value);
-    setIsValidUrl(isURL(val));
+    setIsValidUrl(isURL(e.target.value));
   };
 
   return (
@@ -45,6 +45,9 @@ function UrlShortening() {
           autoComplete="off"
           autoFocus="on"
           onChange={validate}
+          onPaste={validate}
+          onCopy={validate}
+          onCut={validate}
         ></input>
         <p>{isValidUrl ? 'valid' : 'invalid'}</p>
         <button type="submit" className={classes.shortenBtn} disabled={!val || !isValidUrl}>
