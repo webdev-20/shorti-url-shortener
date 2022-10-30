@@ -1,3 +1,4 @@
+const validator = require('validator')
 const { getRandomString } = require('../utils/getRandomString');
 const Link = require('../models/link');
 
@@ -27,7 +28,7 @@ createLink = async (req, res) => {
       message: 'URL is required.',
     });
   }
-  if (!/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
+  if (!validator.isURL(req.body.url)) {
     return res.status(422).json({
       success: false,
       message: 'invalid url',
@@ -78,7 +79,7 @@ editLink = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Link not found.' });
     }
 
-    if(req.body.url && !/(www|http:|https:)+[^\s]+[\w]/g.test(req.body.url)) {
+    if (!validator.isURL(req.body.url)) {
       return res.status(422).json({ success: false, message: 'invalid url' });
     }
 
