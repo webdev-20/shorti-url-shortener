@@ -10,9 +10,6 @@ tags:
   - name: Links
     description: Add, edit, delete links
 
-
-
-
 paths:
   /api/:
     get:
@@ -28,6 +25,68 @@ paths:
                 properties:
                   message:
                     type: string
+
+
+  /api/users/signup:
+    post:
+      tags:
+        - Auth
+      description: Register new user
+      requestBody:
+          required : true
+          content: 
+              application/json:
+                  schema :
+                    required:
+                      - email
+                      - password
+                    properties:
+                      email:
+                        type: string
+                        description: email id of the user.
+                      password:
+                        type: string
+                        description: email password.
+      responses:
+        200:
+          description: Sign up successful.
+          content:  
+              application/json:
+                schema:
+                  type: object
+                  required:
+                    -email
+                  properties:
+                    email: 
+                      type: string
+        400:
+          description: Bad request         
+        404:
+          description: Not found
+
+  /api/users/login:
+    post:
+      tags:
+        - Auth
+      description: Authenticate a user.
+      requestBody:
+          content: 
+              application/json:
+                  schema :
+                    required:
+                      - user._id
+                      - user.password
+                    properties:
+                      user._id:
+                        type: string
+                        description:  user email id.
+                      user.password:
+                        type: string
+                        description: account password.
+      responses:
+        200:
+          description: Login successful
+          
 
   /api/links:
     get:
