@@ -75,16 +75,18 @@ editLink = async (req, res) => {
     }
 
     const link = await Link.findOne({ short: req.params.short });
+
     if (!link) {
       return res.status(404).json({ success: false, message: 'Link not found.' });
     }
 
-    if (!validator.isURL(req.body.url)) {
+    if (req.body.url && !validator.isURL(req.body.url)) {
       return res.status(422).json({ success: false, message: 'invalid url' });
     }
 
     link.url = req.body.url??link.url;
     link.title = req.body.title??link.title;
+
     await link.save();
 
     res.status(200).json({ success: true, message: 'Link updated successfully.' });
