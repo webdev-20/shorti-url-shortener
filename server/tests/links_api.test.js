@@ -41,10 +41,12 @@ describe('GET /api/links/{short} - get original url from shortcode', () => {
     test('redirects to original url', async () => {
         const link = initialLinks[1];
 
-        await api
+        const res = await api
             .get(`/api/links/${link.short}`)
-            .expect(302)
-            .expect('Location', link.url);
+            .expect(200)
+
+        expect(res.body.success).toBe(true)
+        expect(res.body.data.longUrl).toBe(link.url)
     });
 
     test('returns an error when no link with short exist', async () => {
