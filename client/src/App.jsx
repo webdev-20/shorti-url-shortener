@@ -1,10 +1,4 @@
-import {
-  BrowserRouter as Router,
-  useLocation,
-  useSearchParams,
-  Route,
-  Routes,
-} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
 import { LinksProvider } from './context/links';
@@ -14,10 +8,6 @@ import LandingPage from './routes/LandingPage.jsx';
 import NotFoundPage from './routes/NotFound';
 
 function App() {
-  const location = useLocation();
-  //console.log(location.pathname);
-  //linkServices.redirectToLink(location.pathname)
-  //window.location.replace('//www.google.com')
   return (
     <LinksProvider>
       <Routes>
