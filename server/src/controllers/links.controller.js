@@ -51,6 +51,7 @@ createLink = async (req, res) => {
     if (await Link.findOne({ short: req.body.short }))
       return res.status(409).json({ success: false, message: 'short URL already exists' });
   }
+  // TODO: check req.body.short is not in the reserved strings list (utils/reservedStrings)
   const shortCode = req.body.short || (await getRandomString());
   try {
     const link = new Link({
@@ -102,7 +103,8 @@ getLinkFromCode = async (req, res) => {
     if (!foundLink) {
       return res.status(404).json({ success: false, error: 'short link does not exist' });
     }
-    res.redirect(foundLink.url);
+    //TODO: update swagger
+    res.status(200).json({success: true, data: {longUrl:foundLink.url}});
   } catch (error) {
     res.status(500).json({ success: false, error: 'server error' });
   }

@@ -1,24 +1,31 @@
-import Navbar from './Components/Navbar/Navbar';
-import Footer from './Components/Footer/Footer';
-import UrlShortening from './Components/UrlShortening/UrlShortening';
-import ShortLinkList from './Components/ShortLinks/ShortLinksList';
-import Features from './Components/Features/Features';
-
+import {
+  BrowserRouter as Router,
+  useLocation,
+  useSearchParams,
+  Route,
+  Routes,
+} from 'react-router-dom';
 
 import './App.css';
 import { LinksProvider } from './context/links';
-import DashboardPage from './pages/DashboardPage';
+import HomePage from './routes/HomePage';
+import RedirectTo from './routes/RedirectTo.jsx';
+import LandingPage from './routes/LandingPage.jsx';
+import NotFoundPage from './routes/NotFound';
 
 function App() {
+  const location = useLocation();
+  //console.log(location.pathname);
+  //linkServices.redirectToLink(location.pathname)
+  //window.location.replace('//www.google.com')
   return (
     <LinksProvider>
-      <div className="App">
-        <Navbar />
-        <UrlShortening />
-        {/*TODO: DashboardPage will be removed from the index page when we set up routing*/}
-        <DashboardPage />
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path=":short" element={<RedirectTo />} />
+        <Route path="home" element={<HomePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </LinksProvider>
   );
 }
