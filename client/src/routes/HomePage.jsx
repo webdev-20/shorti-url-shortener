@@ -1,6 +1,6 @@
 import ShortLinkList from '../Components/ShortLinks/ShortLinksList.jsx';
 
-const DashboardPage = () => {
+const HomePage = () => {
   return (
     <div>
       <ShortLinkList />
@@ -8,4 +8,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default HomePage;

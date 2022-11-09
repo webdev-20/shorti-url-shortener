@@ -17,7 +17,21 @@ const createLink = async (link) => {
   }
 };
 
+const redirectToLink = async (shortCode) => {
+  try {
+    const {
+      data: { success, data },
+    } = await axios.get(`${serverUrl}${baseURL}/${shortCode}`);
+    if (success) {
+      return data.longUrl;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default {
   getAll,
   createLink,
+  redirectToLink,
 };
