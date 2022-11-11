@@ -30,7 +30,6 @@ paths:
     post:
       tags:
         - Auth
-      Summary: Signup user
       description: Register a new user
       requestBody:
         required: true
@@ -47,20 +46,65 @@ paths:
                 - email
                 - password
       responses:
-        '200':
+        200:
           description: Signup successful
-        '400':
+          content:
+              application/json:
+                schema:
+                  required:
+                    - success
+                    - message
+                  properties:
+                      success:
+                        type: boolean
+                      message:
+                        type: string
+        400:
           description: Validation error
-        '409':
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string           
+        409:
           description: Account already exist
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+
         '500':
           description: Unknown error
+          content: 
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                    
 
   /api/users/login/:
     post:
       tags:
         - Auth
-      summary: Login user
       description: Authenticate a user
       requestBody:
         required: true
@@ -79,9 +123,33 @@ paths:
       responses:
         '200':
           description: Login successful
+          content: 
+            application/json:
+              schema:
+                required:
+                  - sucess
+                  - message
+                  - token
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  token:
+                    type: string
         '500': 
           description: Unexpected error
-
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
 
   /api/links:
     get:
