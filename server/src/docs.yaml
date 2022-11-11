@@ -10,7 +10,6 @@ tags:
   - name: Links
     description: Add, edit, delete links
     
-
 paths:
   /api/:
     get:
