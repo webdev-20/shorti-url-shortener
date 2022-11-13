@@ -391,3 +391,50 @@ paths:
                     type: boolean
                   message:
                     type: string
+    delete:
+      tags:
+        - Links
+      description: delete a link
+      parameters:
+        - in : query
+          name: short
+          description: short code
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successfully deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '404':
+          description: Short link doesn't exist
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '500':
+            description: Server error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                    message:
+                      type: string
+
+
