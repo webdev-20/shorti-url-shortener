@@ -1,3 +1,7 @@
+# To run:
+# cd into `server` directory
+# RUN: `docker compose up -d`
+# Set MONGO_URI inside `.env.` file as: MONGO_URI="mongodb://localhost:27017/mongo"
 services:
   mongo:
     image: mongo
