@@ -1,12 +1,20 @@
 
-![Logo](https://raw.githubusercontent.com/webdev-20/shorti-url-shortener/2a16fa1e8d6a13c4e6aacd5ebd517ed1b6795001/client/public/images/shorti.svg)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/webdev-20/shorti-url-shortener/2a16fa1e8d6a13c4e6aacd5ebd517ed1b6795001/client/public/images/shorti.svg">
+  <h3 align="center">
+      <a href="https://shorti.onrender.com" class="default">View Demo</a> · 
+      <a href="https://github.com/webdev-20/shorti-url-shortener/issues" class="default">Report Bug</a> · 
+      <a href="https://github.com/webdev-20/shorti-url-shortener/issues" class="default">Request Feature</a>
+  </h3>
+  <div>
 
+  <a href="">[![Issues](https://img.shields.io/github/issues/webdev-20/shorti-url-shortener.svg?style=for-the-badge)](https://github.com/webdev-20/shorti-url-shortener/issues)</a>
+  <a href="">[![contributors](https://img.shields.io/github/contributors/webdev-20/shorti-url-shortener.svg?style=for-the-badge)](https://github.com/webdev-20/shorti-url-shortener/contributors)</a>
+  <a href="">[![Forked](https://img.shields.io/github/forks/webdev-20/shorti-url-shortener.svg?style=for-the-badge)](https://github.com/webdev-20/shorti-url-shortener)</a>
 
--   [View Demo](https://shorti.onrender.com) -   [Report Bug](https://github.com/webdev-20/shorti-url-shortener/issues) -   [Request Feature](https://github.com/webdev-20/shorti-url-shortener/issues)
+  </div>
+</div>
 
-[![Issues](https://img.shields.io/github/issues/webdev-20/shorti-url-shortener.svg?style=for-the-badge)](https://github.com/webdev-20/shorti-url-shortener/issues)
-[![contributors](https://img.shields.io/github/contributors/webdev-20/shorti-url-shortener.svg?style=for-the-badge)](https://github.com/webdev-20/shorti-url-shortener/contributors)
-[![Forked](https://img.shields.io/github/forks/webdev-20/shorti-url-shortener.svg?style=for-the-badge)](https://github.com/webdev-20/shorti-url-shortener)
 
 # The Lassie Lounge URL Shortner
 
@@ -43,22 +51,17 @@ Designed with 2 endpoints - **Authentication** and **Links** on CRUD methods.
 
   **Client:** 
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-  
-[https://reactjs.org]
+  <a href="">[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org])</a>
 
-![CSS Modules](https://img.shields.io/badge/CSS%20Modules-000000?style=for-the-badge&logo=CSS-Module&logoColor=white)
+  <a href="">![CSS Modules](https://img.shields.io/badge/CSS%20Modules-000000?style=for-the-badge&logo=CSS-Module&logoColor=white)</a>
+
 
 **Server:** 
 
-![Express](https://img.shields.io/badge/Express%20Js-yellow?style=for-the-badge@logo=expressJS)
-
-[https://expressjs.com/]
+<a href="">[![Express](https://img.shields.io/badge/Express%20Js-yellow?style=for-the-badge&logo=expressJS)](https://expressjs.com/)</a>
 
 
-![Mongo](https://img.shields.io/badge/MongoDB-success?style=for-the-badge&logo=mongodb&logoColor=white&style=flat)
-
-[https://www.mongodb.com/]
+<a href="">[![Mongo](https://img.shields.io/badge/MongoDB-success?style=for-the-badge&logo=mongodb&logoColor=white&style=flat)](https://www.mongodb.com/)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -107,7 +110,7 @@ Designed with 2 endpoints - **Authentication** and **Links** on CRUD methods.
  
 ## Contributing
 
-We love to have your contribution!
+We welcome your contribution!
 
 Please get the issue assigned to yourself before working on it, to avoid duplicate efforts.
 
