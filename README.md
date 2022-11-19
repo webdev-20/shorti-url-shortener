@@ -15,10 +15,9 @@
   </div>
 </div>
 
+<p align="center"; style="font-size:115%;">This project helps user to generate a short URL making it easy to share and use.
+</p>
 
-# The Lassie Lounge URL Shortner
-
-This project helps user to generate a short URL making it easy to share and use.
 <a name = "readme-top"></a>
 
 ## Table of Contents
@@ -34,27 +33,29 @@ This project helps user to generate a short URL making it easy to share and use.
   6. [Live Site](#live-site)
   7. [License](#license)
   8. [Contacts](#contacts)
-  9. [Acknowledgements](#acknowledgements)
-
-
 
 ## About The Project
 
-Shorti URL Shortener allows user to shorten their URL using this API.
-No API keys are required to create an account with us.
+<blockquote> 
+Users can shorten a link using this app which returns a short code that redirects to the original link. <br>
 
-Designed with 2 endpoints - **Authentication** and **Links** on CRUD methods.
+There are multiple endpoints created under **Authentication** and **Links** tag.<br>
+
+Currently user account functions are inactive.
+</blockquote> 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
   
   ## Built With
+  <blockquote>
 
   **Client:** 
 
   <a href="">[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org])</a>
 
   <a href="">![CSS Modules](https://img.shields.io/badge/CSS%20Modules-000000?style=for-the-badge&logo=CSS-Module&logoColor=white)</a>
-
+</blockquote>
+<blockquote>
 
 **Server:** 
 
@@ -63,13 +64,13 @@ Designed with 2 endpoints - **Authentication** and **Links** on CRUD methods.
 
 <a href="">[![Mongo](https://img.shields.io/badge/MongoDB-success?style=for-the-badge&logo=mongodb&logoColor=white&style=flat)](https://www.mongodb.com/)
 
-
+</blockquote>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ## Getting Started
 
-  > To learn how to set up the project locally, follow these simple steps below:
+  > To set up the project locally, follow these simple steps below:
 
 ### Prerequisites:
 
@@ -98,9 +99,9 @@ Designed with 2 endpoints - **Authentication** and **Links** on CRUD methods.
 4. Start the server
 
 ```bash
-  yarn start  ( for both client and server)
-  yarn client ( client only)
-  yarn server (server only)
+  yarn start (for both client and server)
+  yarn client (for client only)
+  yarn server (for server only)
 ```
  **Note:** Create and fill in server/.env and client/.env 
 
@@ -129,13 +130,14 @@ See [contributing.md](https://github.com/webdev-20/shorti-url-shortener/blob/mai
 ## API Documentation
 
 Details of API endpoints can be viewed here
-[Documentation](https://localhost:4002/api/docs)
+https://localhost:4002/api/docs
 
 ## Features
 
-- [ ]  (database/backend) link user and link objects
-- [ ]  frontend test(cypress)
-- [ ]  backend tests (jest)
+- [ ] Track frequency of shortened URL clicked
+- [ ] Track Referrer
+- [ ] Create groups of shortened links for campaings or themes 
+  <br>
 
 Visit the [open issues](https://github.com/webdev-20/shorti-url-shortener/issues) for a full list of proposed features. 
 
@@ -151,16 +153,11 @@ https://shorti.onrender.com/
 
 ## Contacts
 
-Cherylli - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+[Cherylli](https://github.com/cherylli) <br> **Discord ID**- Notcori#0144
 
-Klezi10 - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
 Project Link: [https://github.com/webdev-20/shorti-url-shortener](https://github.com/webdev-20/shorti-url-shortener)
 
-## Acknowledgements
-
- - [Design](https://www.figma.com/file/SP0iLbONWkjZ0cTlpBwSPR/Shorti-Copy?node-id=0%3A1)
- - [Img Shields](https://shields.io/)
  
  
 <p align="right">(<a href="#top">back to top</a>)</p>
