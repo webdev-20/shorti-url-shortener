@@ -1,0 +1,17 @@
+# To run:
+# cd into `server` directory
+# RUN: `docker compose up -d`
+# Set MONGO_URI inside `.env.` file as: MONGO_URI="mongodb://localhost:27017/mongo"
+name: 'shorti-app'
+services:
+  mongo:
+    image: mongo
+    container_name: 'shorti-mongodb'
+    command: mongod --quiet --logpath /dev/null 
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+volumes:
+  mongo-data:
+    driver: local

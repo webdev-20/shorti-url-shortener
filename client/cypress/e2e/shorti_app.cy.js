@@ -12,7 +12,7 @@ describe('Onload', function () {
       delete req.headers['if-none-match'];
     }).as('getLinks');
 
-    cy.wait('@getLinks')
+    cy.wait('@getLinks', { timeout: 15000 })
       .its('response')
       .should('deep.include', {
         statusCode: 200,
