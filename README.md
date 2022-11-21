@@ -22,26 +22,25 @@
 
 ## Table of Contents
   
-  1. [About The Project](#about-the-project)
-     - [Built With](#built-with)
-  2. [Getting Started](#getting-started)
-       - [Prerequisites](#prerequisites)
-       - [Run project locally](#run-project-locally)
-  3. [Contributing](#contributing)
-  4. [API Documentation](#api-documentation)
-  5. [Features](#features)
-  6. [Live Site](#live-site)
-  7. [License](#license)
-  8. [Contacts](#contacts)
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites:](#prerequisites)
+  - [Run project locally](#run-project-locally)
+- [Contributing](#contributing)
+- [API Documentation](#api-documentation)
+- [Features](#features)
+- [Live Site](#live-site)
+- [License](#license)
+- [Contacts](#contacts)
 
 ## About The Project
 
 <blockquote> 
 Users can shorten a link using this app which returns a short code that redirects to the original link. <br>
 
-There are multiple endpoints created under **Authentication** and **Links** tag.<br>
-
-Currently user account functions are inactive.
+Currently user account functions are in development phase.
 </blockquote> 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -134,9 +133,9 @@ https://localhost:4002/api/docs
 
 ## Features
 
-- [ ] Track frequency of shortened URL clicked
-- [ ] Track Referrer
-- [ ] Create groups of shortened links for campaings or themes 
+- [x] Url Shortening
+- [x] Redirect to original Url using the short Url
+- [x] Show a list of previously shortened Url 
   <br>
 
 Visit the [open issues](https://github.com/webdev-20/shorti-url-shortener/issues) for a full list of proposed features. 
@@ -153,7 +152,7 @@ https://shorti.onrender.com/
 
 ## Contacts
 
-[Cherylli](https://github.com/cherylli) <br> **Discord ID**- Notcori#0144
+[Cheryl M](https://github.com/cherylli) <br> **Discord ID**- Notcori#0144
 
 
 Project Link: [https://github.com/webdev-20/shorti-url-shortener](https://github.com/webdev-20/shorti-url-shortener)
