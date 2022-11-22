@@ -121,7 +121,7 @@ paths:
                 - password
       responses:
         '200':
-          description: Login successful
+          description: Auth successful
           content: 
             application/json:
               schema:
