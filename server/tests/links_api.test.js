@@ -18,8 +18,6 @@ beforeEach(async () => {
 });
 
 describe('GET /api/links', () => {
-    // TODO: this test will be moved to logged in landing page test
-    /*
     test('all links are returned', async () => {
         const response = await api.get('/api/links')
             .expect(200)
@@ -27,7 +25,7 @@ describe('GET /api/links', () => {
         expect(response.body.success).toEqual(true);
         expect(response.body.data).toHaveLength(helper.initialLinks.length);
     });
-    */
+
 
     test('specific links are returned', async () => {
         await api.get('/api/links');

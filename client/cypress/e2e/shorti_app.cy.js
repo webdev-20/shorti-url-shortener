@@ -6,7 +6,8 @@ describe('Onload', function () {
     // TODO: logout should be visible if logged in ( login register, should not be visible)
   });
 
-  it('always gets new data on load', () => {
+  // TODO: this test will be moved to logged in landing page test
+  xit('always gets new data on load', () => {
     cy.visit('/');
     cy.intercept('GET', '**/api/links', (req) => {
       delete req.headers['if-none-match'];
