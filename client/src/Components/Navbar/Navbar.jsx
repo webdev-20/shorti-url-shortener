@@ -34,8 +34,9 @@ function Navbar() {
           </ul>
         ) : (
           <>
-            {/*TODO: Needs Styling*/}
+            {/*TODO: Maybe not needed
             <NavLink to="/home">MyLinks</NavLink>
+            */}
             {/*TODO: temporary logout*/}
             <p onClick={() => setAuth({})}>Logout</p>
           </>
