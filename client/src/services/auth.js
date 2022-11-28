@@ -6,6 +6,15 @@ export const register = async (registerDetails) => {
     const response = await api.post(`${linkApiRoute}/signup`, registerDetails);
     return response.data;
   } catch (e) {
-    console.error(e.response.data);
+    return e.response?.data;
+  }
+};
+
+export const login = async (loginDetails) => {
+  try {
+    const response = await api.post(`${linkApiRoute}/login`, loginDetails);
+    return response.data;
+  } catch (e) {
+    return e.response?.data;
   }
 };

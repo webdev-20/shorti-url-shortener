@@ -1,17 +1,16 @@
 import { NavLink } from 'react-router-dom';
-
+import useAuth from '../../hooks/useAuth.js';
 import classes from './Navbar.module.css';
 
 function Navbar() {
+  const { auth, setAuth } = useAuth();
   return (
     <header className={classes.header}>
       <nav className={classes.nav}>
-        {/* <ul>
-          <li> */}
         {/* temporary Logo placeholder */}
-        <div className={classes.logo}>
+        <NavLink to="/" className={classes.logo}>
           <img src="/images/shorti.svg" width={247} height={115}></img>
-        </div>
+        </NavLink>
         {/* </li>
           <li className={classes.featuresPricing}>
             <NavLink to="/">Features</NavLink>
@@ -20,18 +19,27 @@ function Navbar() {
             <NavLink to="/">Pricing</NavLink>
           </li>
         </ul> */}
-        <ul className={classes.loginRegister}>
-          <li>
-            <NavLink to="/" className={classes.signup}>
-              Sign Up
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className={classes.login}>
-              Login
-            </NavLink>
-          </li>
-        </ul>
+        {!auth?.user ? (
+          <ul className={classes.loginRegister}>
+            <li>
+              <NavLink to="/register" className={classes.signup}>
+                Sign Up
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/login" className={classes.login}>
+                Login
+              </NavLink>
+            </li>
+          </ul>
+        ) : (
+          <>
+            {/*TODO: Needs Styling*/}
+            <NavLink to="/home">MyLinks</NavLink>
+            {/*TODO: temporary logout*/}
+            <p onClick={() => setAuth({})}>Logout</p>
+          </>
+        )}
       </nav>
     </header>
   );
