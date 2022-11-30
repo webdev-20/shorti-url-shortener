@@ -26,6 +26,7 @@ describe('GET /api/links', () => {
         expect(response.body.data).toHaveLength(helper.initialLinks.length);
     });
 
+
     test('specific links are returned', async () => {
         await api.get('/api/links');
         const links = await helper.getAllLinksInDB();

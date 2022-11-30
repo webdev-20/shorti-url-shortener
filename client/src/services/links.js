@@ -1,16 +1,15 @@
-import axios from 'axios';
-import { serverUrl } from '../utils/config.js';
+import { api } from './config.js';
 
-const baseURL = '/api/links';
+const linkApiRoute = '/api/links';
 
 const getAll = () => {
-  const request = axios.get(`${serverUrl}${baseURL}`);
+  const request = api.get(linkApiRoute);
   return request.then((res) => res.data);
 };
 
 const createLink = async (link) => {
   try {
-    const res = await axios.post(`${serverUrl}${baseURL}`, link);
+    const res = await api.post(linkApiRoute, link);
     return res.data;
   } catch (error) {
     console.log(error);
@@ -21,7 +20,7 @@ const redirectToLink = async (shortCode) => {
   try {
     const {
       data: { success, data },
-    } = await axios.get(`${serverUrl}${baseURL}/${shortCode}`);
+    } = await api.get(`${linkApiRoute}/${shortCode}`);
     if (success) {
       return data.longUrl;
     }
