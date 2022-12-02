@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 jobs:
   cypress-run:
+    name: cypressJob
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
