@@ -9,7 +9,7 @@ require("dotenv").config();
 const api = supertest(app);
 
 beforeAll(async () => {
-    await mongoose.connect(process.env.TEST_MONGO_URI);
+    await mongoose.connect(process.env.MONGO_URI, {dbName: 'testDb'});
 });
 
 beforeEach(async () => {
