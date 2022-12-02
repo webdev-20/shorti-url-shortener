@@ -21,6 +21,6 @@ jobs:
           TEST_MONGO_URI: ${{secrets.TEST_MONGO_URI}}
           JWT_SECRET: ${{secrets.JWT_SECRET}}  
         with:
-          start: yarn start 
+          start: yarn test 
           project: client
           config-file: cypress.config.js
