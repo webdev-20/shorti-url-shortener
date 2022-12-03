@@ -136,6 +136,19 @@ paths:
                     type: string
                   token:
                     type: string
+        '401':
+          description: Unauthorized (incorrect username/password)
+          content:
+            application/json:
+              schema:
+                required:
+                  - success
+                  - message
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
         '500': 
           description: Unexpected error
           content:
