@@ -167,7 +167,7 @@ describe('POST /api/users/login - user login', () => {
         const response = await api
             .post('/api/users/login')
             .send(user)
-            .expect(500)
+            .expect(401)
             .expect('Content-Type', /application\/json/);
 
         expect(response.body.success).toBe(false)
@@ -182,7 +182,7 @@ describe('POST /api/users/login - user login', () => {
         const response = await api
             .post('/api/users/login')
             .send(user)
-            .expect(500)
+            .expect(401)
             .expect('Content-Type', /application\/json/);
 
         expect(response.body.success).toBe(false)
