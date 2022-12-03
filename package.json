@@ -12,6 +12,7 @@
   "scripts": {
     "client": "yarn workspace client dev",
     "server": "yarn workspace server nodemon server.js",
+    "server:test": "cross-env NODE_ENV=test yarn workspace server nodemon server.js",
     "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
     "prepare": "husky install",
     "format": "prettier --write .",

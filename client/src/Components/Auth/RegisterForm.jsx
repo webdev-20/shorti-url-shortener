@@ -70,7 +70,7 @@ const RegisterForm = () => {
           />
           <br />
           <button type="submit" onClick={handleSubmit}>
-            Login
+            Register
           </button>
           <br />
         </form>

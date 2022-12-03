@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validator = require('validator');
-const User = require('../models/User');
+const User = require('../models/user');
 
 // @desc    Register new user
 // @route   POST /api/users/signup
@@ -62,7 +62,7 @@ const postLogin = async (req, res, next) => {
         return next(err);
       }
       if (!user) {
-        return res.status(500).json({ success: false, message: info.message });
+        return res.status(401).json({ success: false, message: info.message });
       }
 
       req.login(user, { session: false }, async (error) => {

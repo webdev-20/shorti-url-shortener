@@ -1,5 +1,5 @@
 const Link = require('../src/models/link')
-const User = require('../src/models/User')
+const User = require('../src/models/user')
 
 const initialLinks = [
     {

@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const linksRouter = require('./src/routes/links.route');
 const userRouter = require('./src/routes/user.route');
+
 require('./src/config/passport');
 
 // setup express app
@@ -23,6 +24,10 @@ app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 // routes
 app.use('/api/links', linksRouter);
 app.use('/api/users', userRouter);
+if (process.env.NODE_ENV === 'test'){
+  const testingRouter = require('./src/controllers/testing')
+  app.use('/api/testing', testingRouter)
+}
 
 app.get('/', (req, res) => {
   res.send('Express backend running');
