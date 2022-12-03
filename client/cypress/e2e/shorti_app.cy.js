@@ -45,7 +45,7 @@ describe('Shorti App', () => {
     });
   });
 
-  describe.only('authentication', () => {
+  describe('authentication', () => {
     it('user can register', () => {
       cy.visit('/');
       cy.contains('Sign Up').click();
