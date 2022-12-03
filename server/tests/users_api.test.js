@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const supertest = require('supertest');
 const jwt = require('jsonwebtoken')
 const app = require('../app');
-const User = require('../src/models/User');
+const User = require('../src/models/user');
 const helper = require('./test_helper');
 
 

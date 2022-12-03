@@ -52,7 +52,7 @@ const LoginForm = () => {
     <>
       <form>
         <label htmlFor="email">
-          <b>Username</b>
+          <b>Email</b>
         </label>
         <input
           type="text"

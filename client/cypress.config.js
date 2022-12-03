@@ -8,5 +8,7 @@ export default defineConfig({
       // implement node event listeners here
     },
   },
-  env: {},
+  env: {
+    backendUrl: 'http://localhost:4002',
+  },
 });

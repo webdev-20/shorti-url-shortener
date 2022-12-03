@@ -1,8 +1,6 @@
-import Navbar from '../Components/Navbar/Navbar.jsx';
-import UrlShortening from '../Components/UrlShortening/UrlShortening.jsx';
-import HomePage from './HomePage.jsx';
-import Footer from '../Components/Footer/Footer.jsx';
-import ShortLinkList from '../Components/ShortLinks/ShortLinksList.jsx';
+import UrlShortening from '../components/UrlShortening/UrlShortening.jsx';
+import Footer from '../components/Footer/Footer.jsx';
+import ShortLinkList from '../components/ShortLinks/ShortLinksList.jsx';
 import useAuth from '../hooks/useAuth.js';
 
 const LandingPage = () => {

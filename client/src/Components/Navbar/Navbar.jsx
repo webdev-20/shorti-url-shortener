@@ -38,7 +38,7 @@ function Navbar() {
             <NavLink to="/home">MyLinks</NavLink>
             */}
             {/*TODO: temporary logout*/}
-            <p onClick={() => setAuth({})}>Logout</p>
+            <button onClick={() => setAuth({})}>Logout</button>
           </>
         )}
       </nav>
