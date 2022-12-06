@@ -32,6 +32,8 @@
   padding: 0.3em 1em 0.5em 1em;
   margin-top: -2.75em;
   transition: letter-spacing 0.25s;
+  display: inline-block;
+  min-width: 6.5em;
 }
 
 .nav .signup {
@@ -44,6 +46,25 @@
 
 .nav .loginRegister a:hover,
 .nav .loginRegister a:focus {
+  letter-spacing: 0.1875em;
+  background-color: #EC268F;
+}
+
+.logout {
+  border: 0.125em solid #EC268F;
+  border-radius: 62.4375em;
+  text-decoration: none;
+  padding: 0.3em 1em 0.5em 1em;
+  transition: letter-spacing 0.25s;
+  display: inline-block;
+  width: auto;
+  font-size: 1.125rem;
+  margin: 1rem 0;
+  min-width: 6.5em;
+}
+
+.logout:hover,
+.logout:focus {
   letter-spacing: 0.1875em;
   background-color: #EC268F;
 }
