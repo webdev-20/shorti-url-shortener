@@ -60,7 +60,9 @@
   width: auto;
   font-size: 1.125rem;
   margin: 1rem 0;
-  min-width: 6.5em;
+  min-width: 7.5em;
+  background-color: transparent;
+  color: white;
 }
 
 .logout:hover,
