@@ -1,4 +1,4 @@
-import CopyIcon from './../../../assets/copy-icon.svg';
+import CopyIcon from '../../../../assets/copy-icon.svg';
 import classes from './CopyBtn.module.css';
 
 export default function CopyBtn({ icon = true, text = true, dataAttId }) {

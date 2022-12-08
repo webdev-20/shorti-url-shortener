@@ -1,8 +1,8 @@
 import Hero from '../components/Hero/Hero.jsx';
-import Footer from '../components/Footer/Footer.jsx';
+import Footer from '../components/Layout/Footer/Footer.jsx';
 import ShortLinkList from '../components/ShortLinks/ShortLinksList.jsx';
 import useAuth from '../hooks/useAuth.js';
-import ContentLayout from '../components/ContentLayout.jsx';
+import ContentLayout from '../components/Layout/ContentLayout.jsx';
 
 const LandingPage = () => {
   const { auth } = useAuth();

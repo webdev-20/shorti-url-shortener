@@ -9,7 +9,7 @@ import NotFoundPage from './routes/NotFound';
 import LoginPage from './routes/LoginPage';
 import RegisterPage from './routes/RegisterPage.jsx';
 import { AuthProvider } from './context/AuthProvider';
-import Layout from './components/Layout';
+import Layout from './components/Layout/Layout.jsx';
 import RequireAuth from './components/Auth/RequireAuth';
 
 function App() {
