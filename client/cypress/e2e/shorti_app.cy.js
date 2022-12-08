@@ -18,7 +18,7 @@ describe('Shorti App', () => {
       // TODO: login and register should be visible if not logged in
       cy.contains('Login').should('be.visible');
       cy.contains('Sign Up').should('be.visible');
-      cy.contains('Logout').should('not.exist');
+      cy.contains('Log Out').should('not.exist');
     });
 
     // TODO: this test will be moved to logged in landing page test
@@ -161,7 +161,7 @@ describe('Shorti App', () => {
         });
 
       cy.url().should('eq', `${Cypress.config().baseUrl}/`);
-      cy.contains('Logout').should('be.visible');
+      cy.contains('Log Out').should('be.visible');
       cy.contains(`Welcome ${username}`).should('be.visible');
     });
 
@@ -169,7 +169,7 @@ describe('Shorti App', () => {
       // TODO: Add this when persistent log out is implemented
       //cy.visit('/');
 
-      cy.contains('Logout').click();
+      cy.contains('Log Out').click();
       cy.contains('Login').should('be.visible');
       cy.contains('Sign Up').should('be.visible');
       cy.contains(`Welcome ${username}`).should('not.exist');
