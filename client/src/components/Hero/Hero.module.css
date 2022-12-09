@@ -1,4 +1,4 @@
-.UrlShortening {
+.container {
   max-width: 100%;
   padding-left: 23.75em;
 }
@@ -77,62 +77,6 @@ hr {
   position: relative;
   top: -9.5em;
   left: 11em;
-}
-
-.form {
-  display: flex;
-  justify-content: flex-start;
-  margin: -20em 0 15em 0;
-}
-
-.urlInput {
-  font-family: 'Barlow';
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 0.6em 1.2em;
-  font-size: 1.375em;
-  font-weight: lighter;
-  border-radius: 0.3125em 0 0 0.3125em;
-  width: 18.2em;
-  border: 0.15em solid #02BBFF;
-}
-
-.urlInput:focus {
-  outline: none;
-  box-shadow: none;
-  border: 0.1875em solid #039ed6;
-}
-
-.shortenBtn {
-  font-family: 'Nunito';
-  font-size: 1.375em;
-  font-weight: 700;
-  letter-spacing: 0.125em;
-  border: 0.0625em solid #02BBFF;
-  border-radius: 0 0.3125em 0.3125em 0;
-  color: black;
-  padding: 0.8em;
-  background: rgb(0,175,239);
-  background: -moz-linear-gradient(41deg, rgba(0,175,239,1) 0%, rgba(9,245,134,1) 59%, rgba(255,242,18,1) 100%);
-  background: -webkit-linear-gradient(41deg, rgba(0,175,239,1) 0%, rgba(9,245,134,1) 59%, rgba(255,242,18,1) 100%);
-  background: linear-gradient(41deg, rgba(0,175,239,1) 0%, rgba(9,245,134,1) 59%, rgba(255,242,18,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00afef",endColorstr="#fff212",GradientType=1);
-  cursor: pointer;
-  transition: color 0.25s;
-}
-
-::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* Temporary styles for disabled button */
-.shortenBtn:disabled{
-  border: 2px solid red;
-  color: red;
-}
-
-.shortenBtn:hover,
-.shortenBtn:focus {
-  color: whitesmoke;
 }
 
 @media screen and (max-width: 1440px) {

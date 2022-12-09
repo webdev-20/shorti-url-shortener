@@ -227,21 +227,42 @@ describe('Shorti App', () => {
   });
 
   describe('enter url', function () {
+    const urlToShorten = 'www.google.com';
+
     it('valid url - api call (to be added)', () => {
       cy.visit('/');
+      cy.intercept('POST', '**/api/links', (req) => {
+        delete req.headers['if-none-match'];
+      }).as('postLink');
       cy.get('input').clear();
-      cy.get('input').type('www.google.com');
+      cy.get('input').type(`${urlToShorten}`);
       cy.get('form').submit();
-      // TODO: add tests for api call
-      cy.get('p').contains(/^valid$/);
+
+      cy.wait('@postLink')
+        .its('response')
+        .should('deep.include', {
+          statusCode: 201,
+          statusMessage: 'Created',
+        })
+        .and('have.property', 'body')
+        .then((body) => {
+          expect(body.success).to.be.true;
+          expect(body.data.url).to.equal(urlToShorten);
+        });
     });
     it('invalid url - no api call', () => {
+      cy.visit('/');
+      cy.intercept('POST', '**/api/links', (req) => {
+        delete req.headers['if-none-match'];
+      }).as('postLink');
       cy.get('input').clear();
       cy.get('input').type('google');
       cy.get('form').submit();
-      // TODO: add tests for no api call
-      // this is a temporary condition till we decide on a better way to show if url is valid
-      cy.get('p').contains(/^invalid$/);
+
+      cy.wait(2000);
+      cy.get('@postLink').then((interceptions) => {
+        assert.isNull(interceptions);
+      });
     });
   });
 });

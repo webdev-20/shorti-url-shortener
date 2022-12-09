@@ -1,10 +1,10 @@
 import { ShortLinkProvider } from './useShortLinkContext';
 import { useShortLink } from './useShortLink';
-import Card from './../../UI/Card';
+import Card from '../UI/Card';
 
 import classes from './ShortLink.module.css';
-import Ellipsis from '../../UI/Ellipsis/Ellipsis';
-import CopyBtn from '../../UI/CopyBtn/CopyBtn';
+import Ellipsis from '../UI/Ellipsis/Ellipsis';
+import CopyBtn from '../UI/CopyBtn/CopyBtn';
 
 const ShortLink = ({ children }) => {
   return <Card>{children}</Card>;

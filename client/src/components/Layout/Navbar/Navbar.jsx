@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth.js';
+import useAuth from '../../../hooks/useAuth.js';
 import classes from './Navbar.module.css';
 
 function Navbar() {
