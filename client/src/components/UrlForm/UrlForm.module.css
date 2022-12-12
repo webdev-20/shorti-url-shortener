@@ -4,6 +4,12 @@
     margin: -20em 0 15em 0;
 }
 
+.form_auth {
+    display: flex;
+    justify-content: center;
+    margin: 3em 23em 10em 0;
+}
+
 .urlInput {
     font-family: 'Barlow';
     background-color: rgba(255, 255, 255, 0.2);
