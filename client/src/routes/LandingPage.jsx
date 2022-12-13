@@ -8,7 +8,7 @@ const LandingPage = () => {
   const { auth } = useAuth();
   return (
     <div className="App">
-      {auth?.user && <p>Welcome {auth.user}</p>}
+      {auth?.user && <p style={{ fontSize: '1.6em', fontWeight: 600 }}>Welcome {auth.user}</p>}
       <Hero />
       <ContentLayout>
         {auth?.user ? <ShortLinkList /> : <div>Expand your Capabilities...</div>}
