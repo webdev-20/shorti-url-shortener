@@ -11,7 +11,7 @@ const RedirectTo = () => {
       try {
         const originalUrl = await linkServices.redirectToLink(short);
         if (originalUrl) {
-          window.location.replace(`//${originalUrl}`);
+          window.location.replace(`//${originalUrl.replace(/(^\w+:|^)\/\//, '')}`);
         } else {
           window.location.assign('/not/found');
         }

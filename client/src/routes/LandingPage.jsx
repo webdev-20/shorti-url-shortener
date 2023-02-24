@@ -12,6 +12,8 @@ const LandingPage = () => {
       <Hero />
       <ContentLayout>
         {auth?.user ? <ShortLinkList /> : <div>Expand your Capabilities...</div>}
+        {/*TODO: below <ShortLinkList /> is temporary */}
+        <ShortLinkList />
       </ContentLayout>
       <Footer />
     </div>
