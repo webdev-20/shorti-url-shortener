@@ -9,7 +9,7 @@ on:
 jobs:
   cypress-run:
     name: cypress
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 16
       - name: start server/client and run cypress
-        uses: cypress-io/github-action@v5.2.0
+        uses: cypress-io/github-action@v5
         env: 
           MONGO_URI: ${{secrets.MONGO_URI}}
           TEST_MONGO_URI: ${{secrets.TEST_MONGO_URI}}
