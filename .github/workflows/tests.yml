@@ -23,6 +23,7 @@ jobs:
           JWT_SECRET: ${{secrets.JWT_SECRET}}  
         with:
           start: yarn test:client 
+          wait-on: 'http://127.0.0.1:5173'
           project: client
           config-file: cypress.config.js
      
