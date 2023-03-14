@@ -9,20 +9,25 @@ on:
 jobs:
   cypress-run:
     name: cypress
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: start server/client and run cypress
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         env: 
           MONGO_URI: ${{secrets.MONGO_URI}}
           TEST_MONGO_URI: ${{secrets.TEST_MONGO_URI}}
           JWT_SECRET: ${{secrets.JWT_SECRET}}  
         with:
           start: yarn test:client 
+          wait-on: 'http://127.0.0.1:5173'
           project: client
           config-file: cypress.config.js
      
