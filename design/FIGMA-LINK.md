@@ -1,0 +1,1 @@
+https://www.figma.com/file/SP0iLbONWkjZ0cTlpBwSPR/Shorti-Copy?node-id=0%3A1&mode=dev
