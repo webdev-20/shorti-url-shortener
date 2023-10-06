@@ -17,12 +17,12 @@ function App() {
     <AuthProvider>
       <LinksProvider>
         <Routes>
+          <Route path=":short" element={<RedirectTo />} />
           <Route path="/" element={<Layout />}>
             {/* public routes */}
             <Route path="/" element={<LandingPage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
-            <Route path=":short" element={<RedirectTo />} />
             {/* private routes */}
             <Route element={<RequireAuth />}>
               <Route path="home" element={<HomePage />} />
