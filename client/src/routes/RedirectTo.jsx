@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import linkServices from '../services/links.js';
+import Loading from '../components/Layout/Loading/Loading.jsx';
 
 const RedirectTo = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +26,7 @@ const RedirectTo = () => {
     redirect();
   }, []);
 
-  return isLoading ? <div>Redirecting...</div> : null;
+  return isLoading ? <Loading /> : null;
 };
 
 export default RedirectTo;
