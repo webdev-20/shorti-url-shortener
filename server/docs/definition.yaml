@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: The Lassie Lounge - Shorti API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4002
+tags:
+  - name: Auth
+    description: Authentication / Authorization
+  - name: Links
+    description: Create, save, delete links
+externalDocs:
+  url: https://github.com/webdev-20/shorti-url-shortener
+  description: github repo
