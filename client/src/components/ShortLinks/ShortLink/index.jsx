@@ -20,7 +20,9 @@ const Content = ({ shortLink }) => {
           {shortLink.title ? (
             <header className={classes.shortLink_title}>{shortLink.title}</header>
           ) : (
-            <header className={classes.shortLink_title}>Link Title</header>
+            <header className={classes.shortLink_title}>
+              {`${import.meta.env.VITE_FRONTEND_URL}/${shortLink.short}`}
+            </header>
           )}
 
           <p className={classes.shortLink_data}>
@@ -33,7 +35,8 @@ const Content = ({ shortLink }) => {
         </div>
         <div>
           <p className={classes.shortLink_short}>
-            {shortLink.short} {shortLink.short ? <CopyBtn text={false} /> : ''}
+            {shortLink.short}{' '}
+            {shortLink.short ? <CopyBtn text={false} shortCode={shortLink.short} /> : ''}
           </p>
         </div>
       </section>
