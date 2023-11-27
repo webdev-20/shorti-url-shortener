@@ -2,7 +2,7 @@ const validator = require('validator')
 const { getRandomString } = require('../utils/getRandomString');
 const Link = require('../models/link');
 
-getAllLinks = async (req, res) => {
+const getAllLinks = async (req, res) => {
   const allLinks = await Link.find({});
   if (allLinks) {
     return res.status(200).json({
@@ -16,7 +16,8 @@ getAllLinks = async (req, res) => {
   });
 };
 
-createLink = async (req, res) => {
+// Creates Link and save to the database (not linked to any users)
+const createLink = async (req, res) => {
   // TODO: probably move these into config
   const minLength = 1;
   const maxLength = 6;
@@ -69,7 +70,12 @@ createLink = async (req, res) => {
   }
 };
 
-editLink = async (req, res) => {
+// User saving the links
+const saveLink = async (req, res) => {
+
+}
+
+const editLink = async (req, res) => {
   try {
     if (!req.body.url && !req.body.title) {
       return res.status(400).json({ success: false, message: 'URL or title is required.' });
@@ -96,7 +102,7 @@ editLink = async (req, res) => {
   }
 };
 
-getLinkFromCode = async (req, res) => {
+const getLinkFromCode = async (req, res) => {
   const short = req.params.short;
   try {
     const foundLink = await Link.findOne({ short: short });
@@ -110,7 +116,7 @@ getLinkFromCode = async (req, res) => {
   }
 };
 
-deleteLink = async (req, res) => {
+const deleteLink = async (req, res) => {
   const short = req.params.short;
   try {
     const foundLink = await Link.findOne({ short: short });

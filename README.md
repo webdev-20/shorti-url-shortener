@@ -131,6 +131,16 @@ See [contributing.md](https://github.com/webdev-20/shorti-url-shortener/blob/mai
 Details of API endpoints can be viewed here
 https://localhost:4002/api/docs
 
+#### Generate `openAPI` file for swagger
+
+```bash
+cd server
+```
+
+```bash
+npx swagger-jsdoc -d docs/definition.yaml src/routes/*.route.js "docs/*.yaml" -o docs/schemas/openapi.json
+```
+
 ## Features
 
 - [x] Url Shortening
