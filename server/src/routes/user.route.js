@@ -8,21 +8,9 @@ const {postSignup, postLogin} = require('../controllers/user.controller');
  *   post:
  *     tags:
  *       - Auth
- *     description: Register a new user
+ *     description: Register/Signup a new user
  *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *             required:
- *               - email
- *               - password
+ *       $ref: '#/components/requestBodies/Auth'
  *     responses:
  *       200:
  *         description: Signup successful
