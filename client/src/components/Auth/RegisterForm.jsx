@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { register } from '../../services/auth.js';
+import { useSignup } from '../../hooks/useSignup.js';
 
 const RegisterForm = () => {
   const [state, setState] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
+    email: 'notcori@example.com',
+    password: 'password',
+    confirmPassword: 'password',
   });
+  const { signup, error, isLoading } = useSignup();
   const [message, setMessage] = useState(null);
   const [success, setSuccess] = useState(false);
 
@@ -20,10 +22,11 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await register(state);
+    await signup(state);
+
     // res.success = true/false, which can be used for styling error messages
-    setMessage(res.message);
-    setSuccess(res.success);
+    // setMessage(res.message);
+    // setSuccess(res.success);
   };
 
   return (

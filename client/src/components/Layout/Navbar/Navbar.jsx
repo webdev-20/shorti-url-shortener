@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth.js';
+// import useAuth from '../../../hooks/useAuth.js';
 import classes from './Navbar.module.css';
 
 function Navbar() {
-  const { auth, setAuth } = useAuth();
+  // const { auth, setAuth } = useAuth();
   return (
     <header className={classes.header}>
       <nav className={classes.nav}>

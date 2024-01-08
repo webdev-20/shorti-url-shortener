@@ -1,7 +1,7 @@
 import classes from './UrlForm.module.css';
 import { useRef, useState } from 'react';
 import { useLinks } from '../../context/links.jsx';
-import useAuth from '../../hooks/useAuth.js';
+//import useAuth from '../../hooks/useAuth.js';
 import isURL from 'validator/lib/isURL.js';
 
 const UrlForm = () => {
@@ -10,7 +10,7 @@ const UrlForm = () => {
   const [isValidUrl, setIsValidUrl] = useState(false);
   const links = useLinks();
 
-  const { auth } = useAuth();
+  //const { auth } = useAuth();
 
   async function submitHandler(event) {
     event.preventDefault();

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { login } from '../../services/auth.js';
-import useAuth from '../../hooks/useAuth.js';
+// import useAuth from '../../hooks/useAuth.js';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const LoginForm = () => {
-  const { setAuth } = useAuth();
+  // const { setAuth } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
