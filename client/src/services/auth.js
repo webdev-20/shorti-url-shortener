@@ -1,9 +1,9 @@
 import { api } from './config.js';
 const linkApiRoute = '/api/users';
 
-export const register = async (registerDetails) => {
+export const signup = async (signupDetails) => {
   try {
-    return await api.post(`${linkApiRoute}/signup`, registerDetails);
+    return await api.post(`${linkApiRoute}/signup`, signupDetails);
   } catch (e) {
     return e.response?.data;
   }

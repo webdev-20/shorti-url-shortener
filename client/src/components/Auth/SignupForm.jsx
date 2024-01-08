@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { register } from '../../services/auth.js';
 import { useSignup } from '../../hooks/useSignup.js';
 
-const RegisterForm = () => {
+const SignupForm = () => {
   const [state, setState] = useState({
     email: 'notcori@example.com',
     password: 'password',
@@ -75,7 +74,7 @@ const RegisterForm = () => {
           />
           <br />
           <button disabled={isLoading} type="submit" onClick={handleSubmit}>
-            Register
+            Sign Up
           </button>
           <br />
         </form>
@@ -89,4 +88,4 @@ const RegisterForm = () => {
     </>
   );
 };
-export default RegisterForm;
+export default SignupForm;

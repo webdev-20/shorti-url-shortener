@@ -20,9 +20,9 @@ function Navbar() {
           </li>
         </ul> */}
         {!auth?.user ? (
-          <ul className={classes.loginRegister}>
+          <ul className={classes.loginSignup}>
             <li>
-              <NavLink to="/register" className={classes.signup}>
+              <NavLink to="/signup" className={classes.signup}>
                 Sign Up
               </NavLink>
             </li>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from './useAuth.js';
-import { register } from '../services/auth.js';
+import { signup as signupService } from '../services/auth.js';
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
@@ -11,7 +11,7 @@ export const useSignup = () => {
     setIsLoading(true);
     setError(null);
 
-    const res = await register({
+    const res = await signupService({
       email,
       password,
       confirmPassword,
