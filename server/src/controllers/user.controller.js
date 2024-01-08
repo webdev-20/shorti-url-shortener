@@ -3,6 +3,11 @@ const passport = require('passport');
 const validator = require('validator');
 const User = require('../models/user');
 
+// user = { _id: user._id, email: user.email }
+const generateToken = ( user ) => {
+  return jwt.sign(user, process.env.JWT_SECRET)
+}
+
 // @desc    Register new user
 // @route   POST /api/users/signup
 // @access  Public
@@ -44,7 +49,11 @@ const postSignup = (req, res, next) => {
         if (err) {
           return next(err);
         }
-        return res.status(200).json({ success: true, message: 'Sign up successful.' });
+        return res.status(200).json({
+          success: true,
+          message: 'Sign up successful.',
+          token: generateToken({id: user._id, email: user.email})
+        });
       });
     });
   } catch (error) {
@@ -69,7 +78,7 @@ const postLogin = async (req, res, next) => {
         if (error) return next(error);
 
         const body = { _id: user._id, email: user.email };
-        const token = jwt.sign({ user: body }, process.env.JWT_SECRET);
+        const token = generateToken(body)
         return res.status(200).json({ success: true, message: 'Log in successful.', token });
       });
     } catch (error) {

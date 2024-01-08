@@ -4,11 +4,10 @@ import { register } from '../services/auth.js';
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuth();
 
   const signup = async ({ email, password, confirmPassword }) => {
-    console.log(`useSignup / signup - ${email}, ${password}, ${confirmPassword}`);
     setIsLoading(true);
     setError(null);
 
@@ -18,25 +17,27 @@ export const useSignup = () => {
       confirmPassword,
     });
 
-    console.log('res', res);
-
     if (res.success === false) {
       setIsLoading(false);
       setError(res.message);
     } else {
-      console.log('res.ok');
-      localStorage.setItem('user', JSON.stringify({ email }));
+      localStorage.setItem(
+        'user',
+        JSON.stringify({
+          email,
+          token: res.data.token,
+        }),
+      );
       dispatch({
         type: 'LOGIN',
         payload: {
           email,
+          token: res.data.token,
         },
       });
       setIsLoading(false);
     }
   };
-
-  console.log('error', error);
 
   return { signup, isLoading, error };
 };

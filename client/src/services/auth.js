@@ -2,7 +2,6 @@ import { api } from './config.js';
 const linkApiRoute = '/api/users';
 
 export const register = async (registerDetails) => {
-  console.log('auth service - register', `registerDetails - ${registerDetails}`);
   try {
     return await api.post(`${linkApiRoute}/signup`, registerDetails);
   } catch (e) {

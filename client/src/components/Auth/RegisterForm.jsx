@@ -10,7 +10,7 @@ const RegisterForm = () => {
     confirmPassword: 'password',
   });
   const { signup, error, isLoading } = useSignup();
-  const [message, setMessage] = useState(null);
+  const [showError, setShowError] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
@@ -18,10 +18,12 @@ const RegisterForm = () => {
       ...state,
       [e.target.name]: e.target.value,
     });
+    setShowError(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShowError(true);
     await signup(state);
 
     // res.success = true/false, which can be used for styling error messages
@@ -72,13 +74,13 @@ const RegisterForm = () => {
             required
           />
           <br />
-          <button type="submit" onClick={handleSubmit}>
+          <button disabled={isLoading} type="submit" onClick={handleSubmit}>
             Register
           </button>
           <br />
         </form>
       )}
-      {message && <p>{message}</p>}
+      {showError && error && <p>{error}</p>}
       {success && (
         <div>
           <Link to="/login">Login</Link>
