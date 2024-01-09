@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { register } from '../../services/auth.js';
+import { useSignup } from '../../hooks/useSignup.js';
 
-const RegisterForm = () => {
+const SignupForm = () => {
   const [state, setState] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
+    email: 'notcori@example.com',
+    password: 'password',
+    confirmPassword: 'password',
   });
-  const [message, setMessage] = useState(null);
+  const { signup, error, isLoading } = useSignup();
+  const [showError, setShowError] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
@@ -16,14 +17,17 @@ const RegisterForm = () => {
       ...state,
       [e.target.name]: e.target.value,
     });
+    setShowError(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await register(state);
+    setShowError(true);
+    await signup(state);
+
     // res.success = true/false, which can be used for styling error messages
-    setMessage(res.message);
-    setSuccess(res.success);
+    // setMessage(res.message);
+    // setSuccess(res.success);
   };
 
   return (
@@ -69,13 +73,13 @@ const RegisterForm = () => {
             required
           />
           <br />
-          <button type="submit" onClick={handleSubmit}>
-            Register
+          <button disabled={isLoading} type="submit" onClick={handleSubmit}>
+            Sign Up
           </button>
           <br />
         </form>
       )}
-      {message && <p>{message}</p>}
+      {showError && error && <p>{error}</p>}
       {success && (
         <div>
           <Link to="/login">Login</Link>
@@ -84,4 +88,4 @@ const RegisterForm = () => {
     </>
   );
 };
-export default RegisterForm;
+export default SignupForm;

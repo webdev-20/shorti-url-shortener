@@ -1,10 +1,9 @@
 import { api } from './config.js';
 const linkApiRoute = '/api/users';
 
-export const register = async (registerDetails) => {
+export const signup = async (signupDetails) => {
   try {
-    const response = await api.post(`${linkApiRoute}/signup`, registerDetails);
-    return response.data;
+    return await api.post(`${linkApiRoute}/signup`, signupDetails);
   } catch (e) {
     return e.response?.data;
   }
@@ -12,8 +11,7 @@ export const register = async (registerDetails) => {
 
 export const login = async (loginDetails) => {
   try {
-    const response = await api.post(`${linkApiRoute}/login`, loginDetails);
-    return response.data;
+    return await api.post(`${linkApiRoute}/login`, loginDetails);
   } catch (e) {
     return e.response?.data;
   }

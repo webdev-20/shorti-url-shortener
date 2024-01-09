@@ -1,18 +1,18 @@
 import Hero from '../components/Hero/Hero.jsx';
 import Footer from '../components/Layout/Footer/Footer.jsx';
 import ShortLinkList from '../components/ShortLinks/ShortLinksList.jsx';
-import useAuth from '../hooks/useAuth.js';
 import ContentLayout from '../components/Layout/ContentLayout.jsx';
+import { useAuth } from '../hooks/useAuth.js';
 
 const LandingPage = () => {
-  const { auth } = useAuth();
+  const { user } = useAuth();
   return (
     <div className="App">
-      {auth?.user && <p style={{ fontSize: '1.6em', fontWeight: 600 }}>Welcome {auth.user}</p>}
+      {user && <p style={{ fontSize: '1.6em', fontWeight: 600 }}>Welcome {user.email}</p>}
       <Hero />
       <ContentLayout>
-        {auth?.user ? <ShortLinkList /> : <div>Expand your Capabilities...</div>}
-        {/*TODO: below <ShortLinkList /> is temporary */}
+        {user ? <ShortLinkList /> : <div>Expand your Capabilities...</div>}
+        {/*TODO: show public link (history) maybe last 10 when user is not logged in */}
       </ContentLayout>
       <Footer />
     </div>

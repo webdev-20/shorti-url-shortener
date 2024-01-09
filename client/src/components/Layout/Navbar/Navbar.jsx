@@ -1,9 +1,13 @@
 import { NavLink } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth.js';
+// import useAuth from '../../../hooks/useAuth.js';
 import classes from './Navbar.module.css';
+import { useLogout } from '../../../hooks/useLogout.js';
+import { useAuth } from '../../../hooks/useAuth.js';
 
 function Navbar() {
-  const { auth, setAuth } = useAuth();
+  // const { auth, setAuth } = useAuth();
+  const { user } = useAuth();
+  const { logout } = useLogout();
   return (
     <header className={classes.header}>
       <nav className={classes.nav}>
@@ -19,10 +23,10 @@ function Navbar() {
             <NavLink to="/">Pricing</NavLink>
           </li>
         </ul> */}
-        {!auth?.user ? (
-          <ul className={classes.loginRegister}>
+        {!user ? (
+          <ul className={classes.loginSignup}>
             <li>
-              <NavLink to="/register" className={classes.signup}>
+              <NavLink to="/signup" className={classes.signup}>
                 Sign Up
               </NavLink>
             </li>
@@ -38,7 +42,7 @@ function Navbar() {
             <NavLink to="/home">MyLinks</NavLink>
             */}
             {/*TODO: temporary logout*/}
-            <NavLink onClick={() => setAuth({})} className={classes.logout}>
+            <NavLink onClick={() => logout()} className={classes.logout}>
               Log Out
             </NavLink>
           </>

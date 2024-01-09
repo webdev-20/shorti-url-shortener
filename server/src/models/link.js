@@ -26,6 +26,10 @@ const linkSchema = new mongoose.Schema({
     type: Date,
     default: () => Date.now() + EXPIRY_DAYS * 24 * 60 * 60 * 1000,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 });
 
 linkSchema.set('toJSON', {

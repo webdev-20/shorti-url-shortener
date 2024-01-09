@@ -1,21 +1,23 @@
 import { useState } from 'react';
 import { login } from '../../services/auth.js';
-import useAuth from '../../hooks/useAuth.js';
+// import useAuth from '../../hooks/useAuth.js';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useLogin } from '../../hooks/useLogin.js';
 
 const LoginForm = () => {
-  const { setAuth } = useAuth();
+  // const { setAuth } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from.pathname || '/';
 
   const [state, setState] = useState({
-    email: '',
-    password: '',
+    email: 'notcori@example.com',
+    password: 'password',
   });
   const [message, setMessage] = useState(null);
   //const [success, setSuccess] = useState(false);
+  const { login, error, isLoading } = useLogin();
 
   const handleChange = (e) => {
     setState({
@@ -28,20 +30,6 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       const res = await login(state);
-
-      setMessage(res?.message);
-      if (res.success) {
-        setAuth({
-          user: state.email,
-          password: state.password,
-          token: res.token,
-        });
-        setState({
-          email: '',
-          password: '',
-        });
-        navigate(from, { replace: true });
-      }
     } catch (e) {
       // other errors not catched by services/auth/login
       console.error(`Login Error: ${e}`);
@@ -75,12 +63,12 @@ const LoginForm = () => {
           required
         />
         <br />
-        <button type="submit" onClick={handleSubmit}>
+        <button disabled={isLoading} type="submit" onClick={handleSubmit}>
           Login
         </button>
         <br />
       </form>
-      {message && <p>{message}</p>}
+      {error && <p>{error}</p>}
     </>
   );
 };

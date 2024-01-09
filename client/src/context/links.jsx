@@ -21,6 +21,10 @@ export const LinksProvider = ({ children }) => {
     return allLinks.data;
   };
 
+  const getLinksByUser = async (email) => {
+    const links = await linksServices.getLinksByUser(email);
+  };
+
   const addLink = async (link) => {
     const res = await linksServices.createLink(link);
     if (res.success === true) {

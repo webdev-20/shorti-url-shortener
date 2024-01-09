@@ -1,11 +1,12 @@
 import classes from './Hero.module.css';
 import UrlForm from '../UrlForm/UrlForm.jsx';
-import useAuth from '../../hooks/useAuth.js';
+import { useAuth } from '../../hooks/useAuth.js';
+// import useAuth from '../../hooks/useAuth.js';
 
 function Hero() {
-  const { auth } = useAuth();
+  const { user } = useAuth();
 
-  if (!auth?.user) {
+  if (!user) {
     return (
       <>
         <div className={classes.container}>
@@ -28,13 +29,13 @@ function Hero() {
           <UrlForm />
         </div>
       </>
-    )
+    );
   } else {
     return (
       <div className={classes.container}>
         <UrlForm />
       </div>
-    )
+    );
   }
 }
 

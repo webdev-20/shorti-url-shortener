@@ -24,7 +24,7 @@
   letter-spacing: 0.125em;
 }
 
-.nav .loginRegister a {
+.nav .loginSignup a {
   font-size: 1.125em;
   border: 0.125em solid #EC268F;
   border-radius: 62.4375em;
@@ -44,8 +44,8 @@
   background-color: #EC268F;
 }
 
-.nav .loginRegister a:hover,
-.nav .loginRegister a:focus {
+.nav .loginSignup a:hover,
+.nav .loginSignup a:focus {
   letter-spacing: 0.1875em;
   background-color: #EC268F;
 }
@@ -76,7 +76,7 @@
     margin-left: -16em;
   }
 
-  .loginRegister {
+  .loginSignup {
     margin-right: -16em;
   }
 }

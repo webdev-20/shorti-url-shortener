@@ -7,6 +7,8 @@ const getAll = () => {
   return request.then((res) => res.data);
 };
 
+const getLinksByUser = async (email) => {};
+
 const createLink = async (link) => {
   try {
     const res = await api.post(linkApiRoute, link);
@@ -31,6 +33,7 @@ const redirectToLink = async (shortCode) => {
 
 export default {
   getAll,
+  getLinksByUser,
   createLink,
   redirectToLink,
 };

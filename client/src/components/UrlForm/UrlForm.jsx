@@ -1,7 +1,6 @@
 import classes from './UrlForm.module.css';
 import { useRef, useState } from 'react';
 import { useLinks } from '../../context/links.jsx';
-import useAuth from '../../hooks/useAuth.js';
 import isURL from 'validator/lib/isURL.js';
 
 const UrlForm = () => {
@@ -9,8 +8,6 @@ const UrlForm = () => {
   const [val, setVal] = useState('');
   const [isValidUrl, setIsValidUrl] = useState(false);
   const links = useLinks();
-
-  const { auth } = useAuth();
 
   async function submitHandler(event) {
     event.preventDefault();
@@ -25,7 +22,7 @@ const UrlForm = () => {
     setIsValidUrl(isURL(e.target.value));
   };
   return (
-    <form className={auth?.user ? classes.form_auth : classes.form} onSubmit={submitHandler}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <input
         id="urlInput"
         className={classes.urlInput}

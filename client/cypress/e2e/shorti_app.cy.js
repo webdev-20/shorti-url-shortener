@@ -11,11 +11,11 @@ describe('Shorti App', () => {
       cy.visit('/');
       cy.get('#urlInput').should('be.visible');
 
-      // TODO: logout should be visible if logged in ( login register, should not be visible)
+      // TODO: logout should be visible if logged in ( login signup, should not be visible)
     });
 
     it('Login and Sign Up buttons when not logged in', function () {
-      // TODO: login and register should be visible if not logged in
+      // TODO: login and signup should be visible if not logged in
       cy.contains('Login').should('be.visible');
       cy.contains('Sign Up').should('be.visible');
       cy.contains('Log Out').should('not.exist');
@@ -46,7 +46,7 @@ describe('Shorti App', () => {
   });
 
   describe('authentication', () => {
-    it('user can register', () => {
+    it('user can signup', () => {
       cy.visit('/');
       cy.contains('Sign Up').click();
       cy.intercept('POST', '**/api/users/signup', (req) => {
@@ -60,7 +60,7 @@ describe('Shorti App', () => {
       cy.get('button[type="submit"]').click();
       cy.contains('p', 'Sign up successful.').should('be.visible');
 
-      cy.wait('@register')
+      cy.wait('@signup')
         .its('response')
         .should('deep.include', {
           statusCode: 200,
@@ -72,7 +72,7 @@ describe('Shorti App', () => {
         });
     });
 
-    it('user cannot register with existing username', () => {
+    it('user cannot signup with existing username', () => {
       cy.visit('/');
       cy.contains('Sign Up').click();
       cy.intercept('POST', '**/api/users/signup', (req) => {
@@ -85,7 +85,7 @@ describe('Shorti App', () => {
       cy.get('input[name="confirmPassword"]').type(password);
       cy.get('button[type="submit"]').click();
 
-      cy.wait('@register')
+      cy.wait('@signup')
         .its('response')
         .should('deep.include', {
           statusCode: 409,
@@ -99,7 +99,7 @@ describe('Shorti App', () => {
       cy.contains('p', 'Account with that email address already exists.').should('be.visible');
     });
 
-    it('user cannot register with an invalid email', () => {
+    it('user cannot signup with an invalid email', () => {
       cy.visit('/');
       cy.contains('Sign Up').click();
       cy.intercept('POST', '**/api/users/signup', (req) => {
@@ -112,7 +112,7 @@ describe('Shorti App', () => {
       cy.get('input[name="confirmPassword"]').type(password);
       cy.get('button[type="submit"]').click();
 
-      cy.wait('@register')
+      cy.wait('@signup')
         .its('response')
         .should('deep.include', {
           statusCode: 400,
@@ -126,7 +126,7 @@ describe('Shorti App', () => {
       cy.contains('p', 'Please enter a valid email address.').should('be.visible');
     });
 
-    it('user cannot register with an invalid password', () => {
+    it('user cannot signup with an invalid password', () => {
       cy.visit('/');
       cy.contains('Sign Up').click();
 
