@@ -1,27 +1,28 @@
 import { useState } from 'react';
 import { useAuth } from './useAuth.js';
-import { signup as signupService } from '../services/auth.js';
+import { login as loginService } from '../services/auth.js';
 
-export const useSignup = () => {
+export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuth();
 
-  const signup = async ({ email, password, confirmPassword }) => {
+  const login = async ({ email, password }) => {
     setIsLoading(true);
     setError(null);
 
-    const res = await signupService({
+    const res = await loginService({
       email,
       password,
-      confirmPassword,
     });
 
-    console.log('useSignup - res', res);
+    console.log(res);
+
     if (res.success === false) {
       setIsLoading(false);
       setError(res.message);
     } else {
+      console.log(res.data);
       localStorage.setItem(
         'user',
         JSON.stringify({
@@ -40,5 +41,5 @@ export const useSignup = () => {
     }
   };
 
-  return { signup, isLoading, error };
+  return { login, isLoading, error };
 };

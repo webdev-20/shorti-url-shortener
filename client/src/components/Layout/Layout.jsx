@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast';
 const Layout = () => {
   return (
     <main className="App">
-      {/*<Navbar />*/}
+      <Navbar />
       <Toaster />
       <Outlet />
     </main>

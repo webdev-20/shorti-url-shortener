@@ -11,8 +11,7 @@ export const signup = async (signupDetails) => {
 
 export const login = async (loginDetails) => {
   try {
-    const response = await api.post(`${linkApiRoute}/login`, loginDetails);
-    return response.data;
+    return await api.post(`${linkApiRoute}/login`, loginDetails);
   } catch (e) {
     return e.response?.data;
   }
